@@ -1,8 +1,6 @@
 # Errors
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
-
-The Kittn API uses the following error codes:
+The WeTeachMe API uses the following error codes:
 
 
 Error Code | Meaning
@@ -18,3 +16,57 @@ Error Code | Meaning
 429 | Too Many Requests -- You're requesting too many kittens! Slow down!
 500 | Internal Server Error -- We had a problem with our server. Try again later.
 503 | Service Unavailable -- We're temporarially offline for maintanance. Please try again later.
+
+
+> ### Example Error Response
+```shell
+# Multi errors with same status
+
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+```
+
+```json
+{
+  "errors": [
+    {
+      "status": "422",
+      "source": { "pointer": "/data/attributes/first-name" },
+      "title": "Invalid Attribute",
+      "detail": "First name must contain at least three characters."
+    },
+    {
+      "status": "422",
+      "source": { "pointer": "/data/attributes/first-name" },
+      "title": "Invalid Attribute",
+      "detail": "First name must contain at least three characters."
+    }
+  ]
+}
+```
+
+```shell
+# Multi errors with different status
+
+HTTP/1.1 400 Unprocessable Entity
+Content-Type: application/vnd.api+json
+```
+```json
+{
+  "errors": [
+    {
+      "status": "422",
+      "source": { "pointer": "/data/attributes/first-name" },
+      "title": "Invalid Attribute",
+      "detail": "First name must contain at least three characters."
+    },
+    {
+      "status": "500",
+      "source": { "pointer": "/data/attributes/reputation" },
+      "title": "The backend responded with an error",
+      "detail": "Reputation service not responding after three requests."
+    }
+
+  ]
+}
+```
