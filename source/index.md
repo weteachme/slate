@@ -37,13 +37,22 @@ This API documentation page was created with [Slate](http://github.com/tripit/sl
 ```shell
 # With shell, you can just pass the correct header with each request
 curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+  -H "API-KEY: meowmeowmeow"
+
+# OR
+
+curl "api_endpoint_here?api-key=meowmeowmeow"
 ```
 
 ```ruby
-require 'weteachme'
+require 'httparty'
 
-api = WeTeachMe::APIClient.authorize!('meowmeowmeow')
+api = HTTParty.get('some_endpoint_here', headers: { 'API-KEY' => 'meowmeowmeow'})
+
+# OR
+
+api = HTTParty.get('some_endpoint_here?api-key=meowmeowmeow')
+
 ```
 
 > Make sure to replace `meowmeowmeow` with your API key.
@@ -52,7 +61,7 @@ WeTeachMe uses API keys to allow access to the API. You can get the API key unde
 
 API key is expected to be included in all API requests to the server in a header that looks like the following:
 
-`API_KEY: meowmeowmeow`
+`API-KEY: meowmeowmeow`
 
 <aside class="notice">
 You must replace <code>meowmeowmeow</code> with your API key.
