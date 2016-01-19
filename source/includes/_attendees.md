@@ -45,12 +45,12 @@ This endpoint retrieves all kittens.
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-date_id   | true     |         | If set to true, the result will also include cats.
-limit     |          | 20      | How many attendees to return.
-page      |          | 1       | 
+page      |          |         | Pagination (http://jsonapi.org/format/#fetching-pagination)
+filter    |          |         | Filtering (http://jsonapi.org/format/#fetching-filtering)
+sort      |          |         | Sorting (http://jsonapi.org/format/#fetching-sorting)
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Maximum page size is capped at 50
 </aside>
 
 ## Get a Specific Kitten

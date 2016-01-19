@@ -24,6 +24,8 @@ search: true
 
 Welcome to the WeTeachMe API! You can use our API to access WeTeachMe API endpoints.
 
+WeTeachMe API follows [JSON API](http://jsonapi.org/format/) v1.0, which requires use of the JSON API media type (application/vnd.api+json) for exchanging data.
+
 We have language bindings in Shell and Ruby! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
 This API documentation page was created with [Slate](http://github.com/tripit/slate).
