@@ -12,9 +12,9 @@ includes:
   - attendees
   - classes
   - dates
+  - merchandises
   - orders
   - transactions
-  - merchandises
   - errors
 
 search: true

@@ -1,6 +1,6 @@
 # Transactions
 
-## Get All Transactions
+## GET All Transactions
 
 ```shell
 curl "https://api.weteachme.com/v1/transactions"
@@ -27,8 +27,6 @@ HTTParty.get(
       "type":"transactions",
       "links":{"self":"/v1/transactions/224476"},
       "attributes": {
-        "billing-name": "Edward Kelly",
-        "billing-email": "edward@kelly.com",
         "order-id": 10114818,
         "datetime": "Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)",
         "amount": 160.95,
@@ -72,8 +70,6 @@ max-date      | string     |  dd/mm/yyyy
 min-amount    | number     |  
 max-amount    | number     |  
 type          | string     |  Transaction Type (Online, Offline, Withdraw, Subscription, Adjustment)
-billing-email | string     |  Billing Email
-billing-name  | string     |  Billing Name
 order-id      | number     |  Order Id
 
 ### Sorting Fields
