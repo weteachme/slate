@@ -1,9 +1,11 @@
 # Orders
 
-## GET All Orders
+## READ All Orders
 
 ```shell
-curl "https://api.weteachme.com/v1/orders"
+curl 
+  -H "Accept: application/vnd.api+json" 
+  "https://api.weteachme.com/v1/orders"
   -H "API-KEY: meowmeowmeow"
 ```
 
@@ -12,8 +14,11 @@ require 'httparty'
 
 HTTParty.get(
   "https://api.weteachme.com/v1/orders?page[number]=1&page[size]=20", 
-  headers: {"API-KEY" => meowmeowmeow"}
-  );
+  headers: {
+    "Accept" => 'application/vnd.api+json', 
+    "API-KEY" => meowmeowmeow"
+  }
+);
 
 ```
 
@@ -82,10 +87,12 @@ datetime   | datetime | -datetime
 amount     | amount | -amount
 
 
-## GET Order
+## READ and Order
 
 ```shell
-curl "https://api.weteachme.com/v1/orders/1231212"
+curl 
+  -H "Accept: application/vnd.api+json" 
+  "https://api.weteachme.com/v1/orders/1231212"
   -H "API-KEY: meowmeowmeow"
 ```
 
@@ -94,8 +101,11 @@ require 'httparty'
 
 HTTParty.get(
   "https://api.weteachme.com/v1/orders/1231212", 
-  headers: {"API-KEY" => meowmeowmeow"}
-  );
+  headers: {
+    "Accept" => 'application/vnd.api+json', 
+    "API-KEY" => meowmeowmeow"
+  }
+);
 
 ```
 

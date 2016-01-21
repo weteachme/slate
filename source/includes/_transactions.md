@@ -1,9 +1,11 @@
 # Transactions
 
-## GET All Transactions
+## READ All Transactions
 
 ```shell
-curl "https://api.weteachme.com/v1/transactions"
+curl 
+  -H "Accept: application/vnd.api+json" 
+  "https://api.weteachme.com/v1/transactions"
   -H "API-KEY: meowmeowmeow"
 ```
 
@@ -12,8 +14,11 @@ require 'httparty'
 
 HTTParty.get(
   "https://api.weteachme.com/v1/transactions?page[number]=1&page[size]=20", 
-  headers: {"API-KEY" => meowmeowmeow"}
-  );
+  headers: {
+    "Accept" => 'application/vnd.api+json', 
+    "API-KEY" => meowmeowmeow"
+  }
+);
 
 ```
 
