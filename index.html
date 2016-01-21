@@ -603,16 +603,21 @@ Maximum page size is capped at 50
 
           <h1 id="orders">Orders</h1>
 
-<h2 id="get-all-orders">GET All Orders</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.weteachme.com/v1/orders"</span>
+<h2 id="read-all-orders">READ All Orders</h2>
+<pre class="highlight shell"><code>curl 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/orders"</span>
   -H <span class="s2">"API-KEY: meowmeowmeow"</span>
 </code></pre>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
 
 <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
   <span class="s2">"https://api.weteachme.com/v1/orders?page[number]=1&amp;page[size]=20"</span><span class="p">,</span> 
-  <span class="ss">headers: </span><span class="p">{</span><span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"}
-  );
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
 
 </span></code></pre>
 
@@ -762,16 +767,21 @@ Maximum page size is capped at 50
 </tr>
 </tbody></table>
 
-<h2 id="get-order">GET Order</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.weteachme.com/v1/orders/1231212"</span>
+<h2 id="read-and-order">READ and Order</h2>
+<pre class="highlight shell"><code>curl 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/orders/1231212"</span>
   -H <span class="s2">"API-KEY: meowmeowmeow"</span>
 </code></pre>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
 
 <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
   <span class="s2">"https://api.weteachme.com/v1/orders/1231212"</span><span class="p">,</span> 
-  <span class="ss">headers: </span><span class="p">{</span><span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"}
-  );
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
 
 </span></code></pre>
 
@@ -819,16 +829,21 @@ Maximum page size is capped at 50
 
           <h1 id="transactions">Transactions</h1>
 
-<h2 id="get-all-transactions">GET All Transactions</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.weteachme.com/v1/transactions"</span>
+<h2 id="read-all-transactions">READ All Transactions</h2>
+<pre class="highlight shell"><code>curl 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/transactions"</span>
   -H <span class="s2">"API-KEY: meowmeowmeow"</span>
 </code></pre>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
 
 <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
   <span class="s2">"https://api.weteachme.com/v1/transactions?page[number]=1&amp;page[size]=20"</span><span class="p">,</span> 
-  <span class="ss">headers: </span><span class="p">{</span><span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"}
-  );
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
 
 </span></code></pre>
 
