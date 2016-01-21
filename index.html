@@ -219,16 +219,21 @@ Maximum page size is capped at 50
 
           <h1 id="merchandise">Merchandise</h1>
 
-<h2 id="get-all-merchandises">GET All Merchandises</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.weteachme.com/v1/merchandises"</span>
+<h2 id="read-all-merchandises">READ All Merchandises</h2>
+<pre class="highlight shell"><code>curl 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span>
+  <span class="s2">"https://api.weteachme.com/v1/merchandises"</span>
   -H <span class="s2">"API-KEY: meowmeowmeow"</span>
 </code></pre>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
 
 <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
   <span class="s2">"https://api.weteachme.com/v1/merchandises?page[number]=1&amp;page[size]=20"</span><span class="p">,</span> 
-  <span class="ss">headers: </span><span class="p">{</span><span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"}
-  );
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s2">"application/vnd.api+json"</span><span class="p">,</span>
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
 
 </span></code></pre>
 
@@ -355,16 +360,21 @@ Maximum page size is capped at 50
 </tr>
 </tbody></table>
 
-<h2 id="get-merchandise">GET Merchandise</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.weteachme.com/v1/merchandises/1231212"</span>
+<h2 id="read-merchandise">READ Merchandise</h2>
+<pre class="highlight shell"><code>curl 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span>
+  <span class="s2">"https://api.weteachme.com/v1/merchandises/1231212"</span>
   -H <span class="s2">"API-KEY: meowmeowmeow"</span>
 </code></pre>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
 
 <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
   <span class="s2">"https://api.weteachme.com/v1/merchandises/1231212"</span><span class="p">,</span> 
-  <span class="ss">headers: </span><span class="p">{</span><span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"}
-  );
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s2">"application/vnd.api+json"</span><span class="p">,</span>
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
 
 </span></code></pre>
 
@@ -398,7 +408,198 @@ Maximum page size is capped at 50
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.weteachme.com/v1/merchandises/1231212</code></p>
+<p><code class="prettyprint">GET https://api.weteachme.com/v1/merchandisess</code></p>
+
+<h2 id="create-merchandise">CREATE Merchandise</h2>
+<pre class="highlight shell"><code>curl -X POST
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span>
+  <span class="s2">"https://api.weteachme.com/v1/merchandises"</span> 
+  -d <span class="s1">'{
+    "data": {
+      "type": "merchandises",
+      "attributes": {
+        "name": "Coffee Beans",
+        "price": 30.00,
+        "currency": "AUD",
+        "stock": 1000
+      },
+      "relationships": {
+        "classes": {
+          "data": [
+            { "type": "class", "id": "9" },
+            { "type": "class", "id": "10" }
+          ]
+        }
+      }
+    }
+  }'</span>
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"merchandises"</span><span class="p">,</span>
+    <span class="s2">"attributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Coffee Beans"</span><span class="p">,</span>
+      <span class="s2">"price"</span><span class="p">:</span> <span class="mi">30</span><span class="o">.</span><span class="mo">00</span><span class="p">,</span>
+      <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"AUD"</span><span class="p">,</span>
+      <span class="s2">"stock"</span><span class="p">:</span> <span class="mi">1000</span>
+    <span class="p">},</span>
+    <span class="s2">"relationships"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"classes"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"data"</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"class"</span><span class="p">,</span> <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"9"</span> <span class="p">},</span>
+          <span class="p">{</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"class"</span><span class="p">,</span> <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"10"</span> <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/merchandises"</span><span class="p">,</span> 
+  <span class="n">payload</span><span class="p">,</span>
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Content-Type"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+    }
+  );
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns HTTP/1.1 201 Created</p>
+
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"224476"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"merchandises"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"/v1/merchandises/224476"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Coffee Beans"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">30.00</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"stock"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sold"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"classes"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Painting Class"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"classes"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Coffee Making Class"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint creates one merchandise.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.weteachme.com/v1/merchandises</code></p>
+
+<h2 id="update-merchandise">UPDATE Merchandise</h2>
+<pre class="highlight shell"><code>curl -X PATCH 
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/merchandises/12"</span> 
+  -d <span class="s1">'{
+    "data": {
+      "id": 12,
+      "type": "merchandises",
+      "attributes": {
+        "name": "Coffee Beans",
+        "price": 40.00
+      },
+      "relationships": {
+        "classes": {
+          "data": [
+            { "type": "class", "id": "8" },
+            { "type": "class", "id": "10" }
+          ]
+        }
+      }
+    }
+  }'</span>
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"merchandises"</span><span class="p">,</span>
+    <span class="s2">"attributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Coffee Beans"</span><span class="p">,</span>
+      <span class="s2">"price"</span><span class="p">:</span> <span class="mi">40</span><span class="o">.</span><span class="mo">00</span><span class="p">,</span>
+      <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"AUD"</span><span class="p">,</span>
+      <span class="s2">"stock"</span><span class="p">:</span> <span class="mi">1000</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">patch</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/merchandises/12"</span><span class="p">,</span> 
+  <span class="n">payload</span><span class="p">,</span>
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Content-Type"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns HTTP/1.1 204 No Content</p>
+</blockquote>
+
+<p>This endpoint updates one merchandise by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://api.weteachme.com/v1/merchandises/12</code></p>
+
+<h2 id="delete-merchandise">DELETE Merchandise</h2>
+<pre class="highlight shell"><code>curl -X DELETE 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/merchandises/12"</span> 
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/merchandises/12"</span><span class="p">,</span> 
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="s1">'meowmeowmeow'</span><span class="s2">"
+  }
+);
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns HTTP/1.1 204 No Content</p>
+</blockquote>
+
+<p>This endpoint updates one merchandise by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://api.weteachme.com/v1/merchandises/12</code></p>
 
           <h1 id="orders">Orders</h1>
 
