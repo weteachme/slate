@@ -215,6 +215,335 @@ Maximum page size is capped at 50
 
           <h1 id="classes">Classes</h1>
 
+<h2 id="read-all-classes">READ All Classes</h2>
+<pre class="highlight shell"><code>curl 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span>
+  <span class="s2">"https://api.weteachme.com/v1/classes"</span>
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/classes?page[number]=1&amp;page[size]=20&amp;include=dates&amp;fields[classes]=name,location,thumbnail"</span><span class="p">,</span> 
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s2">"application/vnd.api+json"</span><span class="p">,</span>
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"224476"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"classes"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"links"</span><span class="p">:{</span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"/v1/classes/224476"</span><span class="p">},</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Make Coffee Beans"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41 Steward St, Richmond, VIC 3121"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://some-dns-hosted.com/url/thumbnail.jpg"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all classs.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.weteachme.com/v1/classs</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td></td>
+<td></td>
+<td><a href="http://jsonapi.org/format/#fetching-pagination">Pagination (http://jsonapi.org/format/#fetching-pagination)</a></td>
+</tr>
+<tr>
+<td>filter</td>
+<td></td>
+<td></td>
+<td><a href="http://jsonapi.org/format/#fetching-filtering">Filtering (http://jsonapi.org/format/#fetching-filtering)</a></td>
+</tr>
+<tr>
+<td>sort</td>
+<td></td>
+<td></td>
+<td><a href="http://jsonapi.org/format/#fetching-sorting">Sorting (http://jsonapi.org/format/#fetching-sorting)</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="pagination-fields">Pagination Fields</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>size</td>
+<td>Maximum 50</td>
+</tr>
+<tr>
+<td>number</td>
+<td>Default 1</td>
+</tr>
+</tbody></table>
+
+<h3 id="filtering-fields">Filtering Fields</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="sorting-fields">Sorting Fields</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>name</td>
+</tr>
+</tbody></table>
+
+<h2 id="read-class">READ Class</h2>
+<pre class="highlight shell"><code>curl 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span>
+  <span class="s2">"https://api.weteachme.com/v1/classs/1231212"</span>
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/classs/1231212"</span><span class="p">,</span> 
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s2">"application/vnd.api+json"</span><span class="p">,</span>
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"224476"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"classs"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"links"</span><span class="p">:{</span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"/v1/classs/224476"</span><span class="p">},</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Make Coffee Beans"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41 Steward St, Richmond, VIC 3121"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://some-dns-hosted.com/url/thumbnail.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">121</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"subcategory_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">133</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"all the fields"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves one class by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.weteachme.com/v1/classss</code></p>
+
+<h2 id="create-class">CREATE Class</h2>
+<pre class="highlight shell"><code>curl -X POST
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span>
+  <span class="s2">"https://api.weteachme.com/v1/classs"</span> 
+  -d <span class="s1">'{
+    "data": {
+      "type": "classs",
+      "attributes": {
+        "name": "How to Make Coffee Beans",
+        "location": "41 Steward St, Richmond, VIC 3121",
+        "thumbnail": "https://some-dns-hosted.com/url/thumbnail.jpg",
+        "category_id": 121,
+        "subcategory_id": 133,
+        "all updatable fields": "..."
+      }
+    }
+  }'</span>
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"classs"</span><span class="p">,</span>
+    <span class="s2">"attributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"How to Make Coffee Beans"</span><span class="p">,</span>
+      <span class="s2">"location"</span><span class="p">:</span> <span class="s2">"41 Steward St, Richmond, VIC 3121"</span><span class="p">,</span>
+      <span class="s2">"thumbnail"</span><span class="p">:</span> <span class="s2">"https://some-dns-hosted.com/url/thumbnail.jpg"</span><span class="p">,</span>
+      <span class="s2">"category_id"</span><span class="p">:</span> <span class="mi">121</span><span class="p">,</span>
+      <span class="s2">"subcategory_id"</span><span class="p">:</span> <span class="mi">133</span><span class="p">,</span>
+      <span class="s2">"all updatable fields"</span><span class="p">:</span> <span class="s2">"..."</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/classs"</span><span class="p">,</span> 
+  <span class="n">payload</span><span class="p">,</span>
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Content-Type"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+    }
+  );
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns HTTP/1.1 201 Created</p>
+
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"224476"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"classs"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"/v1/classs/224476"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Make Coffee Beans"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41 Steward St, Richmond, VIC 3121"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://some-dns-hosted.com/url/thumbnail.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">121</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"subcategory_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">133</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"all updatable fields"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint creates one class.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.weteachme.com/v1/classs</code></p>
+
+<h2 id="update-class">UPDATE Class</h2>
+<pre class="highlight shell"><code>curl -X PATCH 
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/classs/12"</span> 
+  -d <span class="s1">'{
+    "data": {
+      "id": 12,
+      "type": "classs",
+      "attributes": {
+        "name": "How to Make Coffee Beans",
+        "location": "41 Steward St, Richmond, VIC 3121",
+        "thumbnail": "https://some-dns-hosted.com/url/thumbnail.jpg",
+        "category_id": 121,
+        "subcategory_id": 133,
+        "all updatable fields": "..."
+      }
+    }
+  }'</span>
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"classs"</span><span class="p">,</span>
+    <span class="s2">"attributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"How to Make Coffee Beans"</span><span class="p">,</span>
+      <span class="s2">"location"</span><span class="p">:</span> <span class="s2">"41 Steward St, Richmond, VIC 3121"</span><span class="p">,</span>
+      <span class="s2">"thumbnail"</span><span class="p">:</span> <span class="s2">"https://some-dns-hosted.com/url/thumbnail.jpg"</span><span class="p">,</span>
+      <span class="s2">"category_id"</span><span class="p">:</span> <span class="mi">121</span><span class="p">,</span>
+      <span class="s2">"subcategory_id"</span><span class="p">:</span> <span class="mi">133</span><span class="p">,</span>
+      <span class="s2">"all updatable fields"</span><span class="p">:</span> <span class="s2">"..."</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">patch</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/classs/12"</span><span class="p">,</span> 
+  <span class="n">payload</span><span class="p">,</span>
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Content-Type"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns HTTP/1.1 204 No Content</p>
+</blockquote>
+
+<p>This endpoint updates one class by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://api.weteachme.com/v1/classs/12</code></p>
+
+<h2 id="delete-class">DELETE Class</h2>
+<pre class="highlight shell"><code>curl -X DELETE 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/classs/12"</span> 
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/classs/12"</span><span class="p">,</span> 
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="s1">'meowmeowmeow'</span><span class="s2">"
+  }
+);
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns HTTP/1.1 204 No Content</p>
+</blockquote>
+
+<p>This endpoint updates one class by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE https://api.weteachme.com/v1/classs/12</code></p>
+
           <h1 id="dates">Dates</h1>
 
           <h1 id="merchandise">Merchandise</h1>
@@ -599,7 +928,7 @@ Maximum page size is capped at 50
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PATCH https://api.weteachme.com/v1/merchandises/12</code></p>
+<p><code class="prettyprint">DELETE https://api.weteachme.com/v1/merchandises/12</code></p>
 
           <h1 id="orders">Orders</h1>
 
