@@ -336,4 +336,4 @@ This endpoint updates one merchandise by id.
 
 ### HTTP Request
 
-`PATCH https://api.weteachme.com/v1/merchandises/12`
+`DELETE https://api.weteachme.com/v1/merchandises/12`
