@@ -121,7 +121,7 @@ This endpoint retrieves one class by id.
 
 ### HTTP Request
 
-`GET https://api.weteachme.com/v1/classss`
+`GET https://api.weteachme.com/v1/class/1212`
 
 
 ## CREATE Class

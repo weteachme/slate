@@ -11,6 +11,7 @@ toc_footers:
 includes:
   - attendees
   - classes
+  - images
   - dates
   - merchandises
   - orders
