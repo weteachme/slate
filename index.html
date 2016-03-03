@@ -378,7 +378,7 @@ Maximum page size is capped at 50
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.weteachme.com/v1/classss</code></p>
+<p><code class="prettyprint">GET https://api.weteachme.com/v1/class/1212</code></p>
 
 <h2 id="create-class">CREATE Class</h2>
 <pre class="highlight shell"><code>curl -X POST
@@ -543,6 +543,175 @@ Maximum page size is capped at 50
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">DELETE https://api.weteachme.com/v1/classs/12</code></p>
+
+          <h1 id="images">Images</h1>
+
+<h2 id="create-image">CREATE Image</h2>
+<pre class="highlight shell"><code>curl -X POST
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span>
+  <span class="s2">"https://api.weteachme.com/v1/images"</span> 
+  -d <span class="s1">'{
+    "data": {
+      "type": "images",
+      "attributes": {
+        "name": "Nice Image",
+        "url": "File Object"
+      }
+    },
+    "relationships": {
+      "class": {
+        "data": { "type": "class", "id": "9" }
+      }
+    }
+  }'</span>
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"images"</span><span class="p">,</span>
+    <span class="s2">"attributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Nice Image"</span><span class="p">,</span>
+      <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"File Object"</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">"relationships"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"class"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"class"</span><span class="p">,</span> <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"9"</span> <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/images"</span><span class="p">,</span> 
+  <span class="n">payload</span><span class="p">,</span>
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Content-Type"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+    }
+  );
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns HTTP/1.1 201 Created</p>
+
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"224476"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"images"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"/v1/images/224476"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nice Image"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File Object"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"class"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"class"</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint creates one image.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.weteachme.com/v1/images</code></p>
+
+<aside class="notice">
+You must specify a <code>class relationship</code>.
+</aside>
+
+<h2 id="update-image">UPDATE Image</h2>
+<pre class="highlight shell"><code>curl -X PATCH 
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/images/12"</span> 
+  -d <span class="s1">'{
+    "data": {
+      "id": 12,
+      "type": "images",
+      "attributes": {
+        "name": "Nice Image",
+        "url": "File Object"
+      }
+    }
+  }'</span>
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"images"</span><span class="p">,</span>
+    <span class="s2">"attributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"How to Make Coffee Beans"</span><span class="p">,</span>
+      <span class="s2">"location"</span><span class="p">:</span> <span class="s2">"41 Steward St, Richmond, VIC 3121"</span><span class="p">,</span>
+      <span class="s2">"thumbnail"</span><span class="p">:</span> <span class="s2">"https://some-dns-hosted.com/url/thumbnail.jpg"</span><span class="p">,</span>
+      <span class="s2">"category_id"</span><span class="p">:</span> <span class="mi">121</span><span class="p">,</span>
+      <span class="s2">"subcategory_id"</span><span class="p">:</span> <span class="mi">133</span><span class="p">,</span>
+      <span class="s2">"all updatable fields"</span><span class="p">:</span> <span class="s2">"..."</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">patch</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/images/12"</span><span class="p">,</span> 
+  <span class="n">payload</span><span class="p">,</span>
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Content-Type"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns HTTP/1.1 204 No Content</p>
+</blockquote>
+
+<p>This endpoint updates one image by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://api.weteachme.com/v1/images/12</code></p>
+
+<h2 id="delete-image">DELETE Image</h2>
+<pre class="highlight shell"><code>curl -X DELETE 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/images/12"</span> 
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/images/12"</span><span class="p">,</span> 
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="s1">'meowmeowmeow'</span><span class="s2">"
+  }
+);
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns HTTP/1.1 204 No Content</p>
+</blockquote>
+
+<p>This endpoint updates one image by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE https://api.weteachme.com/v1/images/12</code></p>
 
           <h1 id="dates">Dates</h1>
 
