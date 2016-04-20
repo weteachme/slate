@@ -32,9 +32,16 @@ HTTParty.get(
       "type":"attendees",
       "links":{"self":"/v1/attendees/224476"},
       "attributes": {
-        "name": "How to Make Coffee Beans",
-        "location": "41 Steward St, Richmond, VIC 3121",
-        "thumbnail": "https://some-dns-hosted.com/url/thumbnail.jpg"
+        "firstname": "Wayne",
+        "lastname": "Rooney",
+        "email": "wayne@rooney.com",
+        "mobile": "0433 333 333",
+        "order-id": 123123123,
+        "payment-status": "Paid",
+        "requirements": "Gluten Free",
+        "medical": "None",
+        "emergency_contact": "Some Contacts",
+        "merchandise-list": ["Ice Cream x 1", "Paper x 2"]
       }
     }
   ]
@@ -108,12 +115,17 @@ HTTParty.get(
     "type":"attendees",
     "links":{"self":"/v1/attendees/224476"},
     "attributes": {
-      "name": "How to Make Coffee Beans",
-      "location": "41 Steward St, Richmond, VIC 3121",
-      "thumbnail": "https://some-dns-hosted.com/url/thumbnail.jpg",
-      "category_id": 121,
-      "subcategory_id": 133,
-      "all the fields": "..."
+      "firstname": "Wayne",
+      "lastname": "Rooney",
+      "email": "wayne@rooney.com",
+      "mobile": "0433 333 333",
+      "order-id": 123123123,
+      "payment-status": "Paid",
+      "requirements": "Gluten Free",
+      "medical": "None",
+      "emergency_contact": "Some Contacts",
+      "merchandise-list": ["Ice Cream x 1", "Paper x 2"]
+      "all the fields": "...."
     }
   }
 }
@@ -138,11 +150,13 @@ curl -X PATCH
       "id": 12,
       "type": "attendees",
       "attributes": {
-        "name": "How to Make Coffee Beans",
-        "location": "41 Steward St, Richmond, VIC 3121",
-        "thumbnail": "https://some-dns-hosted.com/url/thumbnail.jpg",
-        "category_id": 121,
-        "subcategory_id": 133,
+        "firstname": "Wayne",
+        "lastname": "Rooney",
+        "email": "wayne@rooney.com",
+        "mobile": "0433 333 333",
+        "requirements": "Gluten Free",
+        "medical": "None",
+        "emergency_contact": "Some Contacts",
         "all updatable fields": "..."
       }
     }
@@ -158,11 +172,13 @@ payload = {
     "id": 12,
     "type": "attendees",
     "attributes": {
-      "name": "How to Make Coffee Beans",
-      "location": "41 Steward St, Richmond, VIC 3121",
-      "thumbnail": "https://some-dns-hosted.com/url/thumbnail.jpg",
-      "category_id": 121,
-      "subcategory_id": 133,
+      "firstname": "Wayne",
+      "lastname": "Rooney",
+      "email": "wayne@rooney.com",
+      "mobile": "0433 333 333",
+      "requirements": "Gluten Free",
+      "medical": "None",
+      "emergency_contact": "Some Contacts",
       "all updatable fields": "..."
     }
   }
