@@ -124,7 +124,7 @@ HTTParty.get(
       "requirements": "Gluten Free",
       "medical": "None",
       "emergency_contact": "Some Contacts",
-      "merchandise-list": ["Ice Cream x 1", "Paper x 2"]
+      "merchandise-list": ["Ice Cream x 1", "Paper x 2"],
       "all the fields": "...."
     }
   }
