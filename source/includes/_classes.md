@@ -41,11 +41,11 @@ HTTParty.get(
 }
 ```
 
-This endpoint retrieves all classs.
+This endpoint retrieves all classes.
 
 ### HTTP Request
 
-`GET https://api.weteachme.com/v1/classs`
+`GET https://api.weteachme.com/v1/classes`
 
 ### Query Parameters
 
@@ -80,7 +80,7 @@ name  | name | -name
 ```shell
 curl 
   -H "Accept: application/vnd.api+json"
-  "https://api.weteachme.com/v1/classs/1231212"
+  "https://api.weteachme.com/v1/classes/1231212"
   -H "API-KEY: meowmeowmeow"
 ```
 
@@ -88,7 +88,7 @@ curl
 require 'httparty'
 
 HTTParty.get(
-  "https://api.weteachme.com/v1/classs/1231212", 
+  "https://api.weteachme.com/v1/classes/1231212", 
   headers: {
     "Accept" => "application/vnd.api+json",
     "API-KEY" => meowmeowmeow"
@@ -103,8 +103,8 @@ HTTParty.get(
 {
   "data": {
     "id":"224476",
-    "type":"classs",
-    "links":{"self":"/v1/classs/224476"},
+    "type":"classes",
+    "links":{"self":"/v1/classes/224476"},
     "attributes": {
       "name": "How to Make Coffee Beans",
       "location": "41 Steward St, Richmond, VIC 3121",
@@ -130,10 +130,10 @@ This endpoint retrieves one class by id.
 curl -X POST
   -H "Content-Type: application/vnd.api+json" 
   -H "Accept: application/vnd.api+json"
-  "https://api.weteachme.com/v1/classs" 
+  "https://api.weteachme.com/v1/classes" 
   -d '{
     "data": {
-      "type": "classs",
+      "type": "classes",
       "attributes": {
         "name": "How to Make Coffee Beans",
         "location": "41 Steward St, Richmond, VIC 3121",
@@ -152,7 +152,7 @@ require 'httparty'
 
 payload = {
   "data": {
-    "type": "classs",
+    "type": "classes",
     "attributes": {
       "name": "How to Make Coffee Beans",
       "location": "41 Steward St, Richmond, VIC 3121",
@@ -164,7 +164,7 @@ payload = {
   }
 }
 HTTParty.post(
-  "https://api.weteachme.com/v1/classs", 
+  "https://api.weteachme.com/v1/classes", 
   payload,
   headers: {
     "Content-Type" => 'application/vnd.api+json', 
@@ -183,9 +183,9 @@ HTTParty.post(
 {
   "data": {
     "id":"224476",
-    "type":"classs",
+    "type":"classes",
     "links":{
-      "self":"/v1/classs/224476"
+      "self":"/v1/classes/224476"
     },
     "attributes": {
       "name": "How to Make Coffee Beans",
@@ -203,7 +203,7 @@ This endpoint creates one class.
 
 ### HTTP Request
 
-`POST https://api.weteachme.com/v1/classs`
+`POST https://api.weteachme.com/v1/classes`
 
 
 ## UPDATE Class
@@ -212,11 +212,11 @@ This endpoint creates one class.
 curl -X PATCH 
   -H "Content-Type: application/vnd.api+json" 
   -H "Accept: application/vnd.api+json" 
-  "https://api.weteachme.com/v1/classs/12" 
+  "https://api.weteachme.com/v1/classes/12" 
   -d '{
     "data": {
       "id": 12,
-      "type": "classs",
+      "type": "classes",
       "attributes": {
         "name": "How to Make Coffee Beans",
         "location": "41 Steward St, Richmond, VIC 3121",
@@ -236,7 +236,7 @@ require 'httparty'
 payload = {
   "data": {
     "id": 12,
-    "type": "classs",
+    "type": "classes",
     "attributes": {
       "name": "How to Make Coffee Beans",
       "location": "41 Steward St, Richmond, VIC 3121",
@@ -248,7 +248,7 @@ payload = {
   }
 }
 HTTParty.patch(
-  "https://api.weteachme.com/v1/classs/12", 
+  "https://api.weteachme.com/v1/classes/12", 
   payload,
   headers: {
     "Content-Type" => 'application/vnd.api+json', 
@@ -266,14 +266,14 @@ This endpoint updates one class by id.
 
 ### HTTP Request
 
-`PATCH https://api.weteachme.com/v1/classs/12`
+`PATCH https://api.weteachme.com/v1/classes/12`
 
 ## DELETE Class
 
 ```shell
 curl -X DELETE 
   -H "Accept: application/vnd.api+json" 
-  "https://api.weteachme.com/v1/classs/12" 
+  "https://api.weteachme.com/v1/classes/12" 
   -H "API-KEY: meowmeowmeow"
 ```
 
@@ -281,7 +281,7 @@ curl -X DELETE
 require 'httparty'
 
 HTTParty.delete(
-  "https://api.weteachme.com/v1/classs/12", 
+  "https://api.weteachme.com/v1/classes/12", 
   headers: {
     "Accept" => 'application/vnd.api+json', 
     "API-KEY" => 'meowmeowmeow'"
@@ -297,4 +297,4 @@ This endpoint updates one class by id.
 
 ### HTTP Request
 
-`DELETE https://api.weteachme.com/v1/classs/12`
+`DELETE https://api.weteachme.com/v1/classes/12`

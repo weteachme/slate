@@ -1,41 +1,47 @@
 # Attendees
 
-## Get All Attendees
+## READ All Attendees
 
 ```shell
-curl "https://api.weteachme.com/v1/attendees"
-  -H "Authorization: meowmeowmeow"
+curl 
+  -H "Accept: application/vnd.api+json"
+  "https://api.weteachme.com/v1/attendees"
+  -H "API-KEY: meowmeowmeow"
 ```
 
 ```ruby
-require 'kittn'
+require 'httparty'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
+HTTParty.get(
+  "https://api.weteachme.com/v1/attendees?page[number]=1&page[size]=20&include=dates&fields[attendees]=name,location,thumbnail", 
+  headers: {
+    "Accept" => "application/vnd.api+json",
+    "API-KEY" => meowmeowmeow"
+  }
+);
+
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+  "data":[
+    {
+      "id":"224476",
+      "type":"attendees",
+      "links":{"self":"/v1/attendees/224476"},
+      "attributes": {
+        "name": "How to Make Coffee Beans",
+        "location": "41 Steward St, Richmond, VIC 3121",
+        "thumbnail": "https://some-dns-hosted.com/url/thumbnail.jpg"
+      }
+    }
+  ]
+}
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all attendees.
 
 ### HTTP Request
 
@@ -45,59 +51,170 @@ This endpoint retrieves all kittens.
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-page      |          |         | Pagination (http://jsonapi.org/format/#fetching-pagination)
-filter    |          |         | Filtering (http://jsonapi.org/format/#fetching-filtering)
-sort      |          |         | Sorting (http://jsonapi.org/format/#fetching-sorting)
+page      |          |         | [Pagination (http://jsonapi.org/format/#fetching-pagination)](http://jsonapi.org/format/#fetching-pagination)
+filter    |          |         | [Filtering (http://jsonapi.org/format/#fetching-filtering)](http://jsonapi.org/format/#fetching-filtering)
+sort      |          |         | [Sorting (http://jsonapi.org/format/#fetching-sorting)](http://jsonapi.org/format/#fetching-sorting)
 
-<aside class="success">
-Maximum page size is capped at 50
-</aside>
+### Pagination Fields
 
-## Get a Specific Kitten
+Parameter  | Description
+---------- | -----------
+size       | Maximum 50
+number     | Default 1
 
-```ruby
-require 'kittn'
+### Filtering Fields
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
+Parameter     | Type       |  Description
+------------- | ---------- |  -----------
+name          | string     |  
+class-list-id | number     |  same as date-id
+date-id       | number     |  same as above
 
-```python
-import kittn
+### Sorting Fields
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+Parameter  | Example
+---------- | -----------
+name  | name | -name
+
+
+## READ Attendee
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+curl 
+  -H "Accept: application/vnd.api+json"
+  "https://api.weteachme.com/v1/attendees/1231212"
+  -H "API-KEY: meowmeowmeow"
+```
+
+```ruby
+require 'httparty'
+
+HTTParty.get(
+  "https://api.weteachme.com/v1/attendees/1231212", 
+  headers: {
+    "Accept" => "application/vnd.api+json",
+    "API-KEY" => meowmeowmeow"
+  }
+);
+
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "data": {
+    "id":"224476",
+    "type":"attendees",
+    "links":{"self":"/v1/attendees/224476"},
+    "attributes": {
+      "name": "How to Make Coffee Beans",
+      "location": "41 Steward St, Richmond, VIC 3121",
+      "thumbnail": "https://some-dns-hosted.com/url/thumbnail.jpg",
+      "category_id": 121,
+      "subcategory_id": 133,
+      "all the fields": "..."
+    }
+  }
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">If you're not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
+This endpoint retrieves one attendee by id.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+`GET https://api.weteachme.com/v1/attendee/1212`
 
 
+## UPDATE Attendee
+
+```shell
+curl -X PATCH 
+  -H "Content-Type: application/vnd.api+json" 
+  -H "Accept: application/vnd.api+json" 
+  "https://api.weteachme.com/v1/attendees/12" 
+  -d '{
+    "data": {
+      "id": 12,
+      "type": "attendees",
+      "attributes": {
+        "name": "How to Make Coffee Beans",
+        "location": "41 Steward St, Richmond, VIC 3121",
+        "thumbnail": "https://some-dns-hosted.com/url/thumbnail.jpg",
+        "category_id": 121,
+        "subcategory_id": 133,
+        "all updatable fields": "..."
+      }
+    }
+  }'
+  -H "API-KEY: meowmeowmeow"
+```
+
+```ruby
+require 'httparty'
+
+payload = {
+  "data": {
+    "id": 12,
+    "type": "attendees",
+    "attributes": {
+      "name": "How to Make Coffee Beans",
+      "location": "41 Steward St, Richmond, VIC 3121",
+      "thumbnail": "https://some-dns-hosted.com/url/thumbnail.jpg",
+      "category_id": 121,
+      "subcategory_id": 133,
+      "all updatable fields": "..."
+    }
+  }
+}
+HTTParty.patch(
+  "https://api.weteachme.com/v1/attendees/12", 
+  payload,
+  headers: {
+    "Content-Type" => 'application/vnd.api+json', 
+    "Accept" => 'application/vnd.api+json', 
+    "API-KEY" => meowmeowmeow"
+  }
+);
+
+```
+
+> The above command returns HTTP/1.1 204 No Content
+
+
+This endpoint updates one attendee by id.
+
+### HTTP Request
+
+`PATCH https://api.weteachme.com/v1/attendees/12`
+
+## DELETE Attendee
+
+```shell
+curl -X DELETE 
+  -H "Accept: application/vnd.api+json" 
+  "https://api.weteachme.com/v1/attendees/12" 
+  -H "API-KEY: meowmeowmeow"
+```
+
+```ruby
+require 'httparty'
+
+HTTParty.delete(
+  "https://api.weteachme.com/v1/attendees/12", 
+  headers: {
+    "Accept" => 'application/vnd.api+json', 
+    "API-KEY" => 'meowmeowmeow'"
+  }
+);
+
+```
+
+> The above command returns HTTP/1.1 204 No Content
+
+
+This endpoint updates one attendee by id.
+
+### HTTP Request
+
+`DELETE https://api.weteachme.com/v1/attendees/12`
