@@ -87,7 +87,7 @@ datetime   | datetime | -datetime
 amount     | amount | -amount
 
 
-## READ and Order
+## READ an Order
 
 ```shell
 curl 
@@ -118,30 +118,47 @@ HTTParty.get(
     "type":"orders",
     "links":{"self":"/v1/orders/224476"},
     "attributes": {
-      "billing-name": "Edward Kelly",
+      "billing-firstname": "Edward",
+      "billing-lastname": "Kelly",
       "billing-email": "edward@kelly.com",
-      "order-id": 10114818,
       "datetime": "Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)",
-      "amount": 160.95,
-      "currency": "AUD",
-      "status": "Paid"
+      "amount-paid": "299.00",
+      "amount-outstanding": "99.00",
+      "amount-earned": 280.00,
+      "payment-method": "Online",
+      "reference": "224476",
+      "multi-classes": false,
+      "multi-dates": false,
+      "multi-ticket-types": true
     }
   },
-  "included": [{
-    "type": "carts",
-    "id": "1",
-    "attributes": {
-      "name": "Painting Class"
-    },
-    "included": [{
-      "type": "attendees",
-      "id": "100",
-      "attributes": {
-        "name": "Edward Keylly",
-        "email": "edward@email.com"
+  "relationships": {
+    "carts": {
+      "links": {
+        "related": "https://api.weteachme.com/v1/order/carts?filter[order-id]=224476"
       }
-    }]
-  }]
+    },
+    "attendees": {
+      "links": {
+        "related": "https://api.weteachme.com/v1/order/attendees?filter[order-id]=224476"
+      }
+    },
+    "recipients": {
+      "links": {
+        "related": "https://api.weteachme.com/v1/order/recipients?filter[order-id]=224476"
+      }
+    },
+    "payment-activities": {
+      "links": {
+        "related": "https://api.weteachme.com/v1/order/payment-activities?filter[order-id]=224476"
+      }
+    },
+    "log-activities": {
+      "links": {
+        "related": "https://api.weteachme.com/v1/order/log-activities?filter[order-id]=224476"
+      }
+    }
+  }
 }
 ```
 
@@ -150,3 +167,4 @@ This endpoint retrieves one order by id.
 ### HTTP Request
 
 `GET https://api.weteachme.com/v1/orders/1231212`
+
