@@ -1780,7 +1780,7 @@ You must specify a <code>class relationship</code>.
 </tr>
 </tbody></table>
 
-<h2 id="read-and-order">READ and Order</h2>
+<h2 id="read-an-order">READ an Order</h2>
 <pre class="highlight shell"><code>curl 
   -H <span class="s2">"Accept: application/vnd.api+json"</span> 
   <span class="s2">"https://api.weteachme.com/v1/orders/1231212"</span>
@@ -1807,30 +1807,47 @@ You must specify a <code>class relationship</code>.
     </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"links"</span><span class="p">:{</span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"/v1/orders/224476"</span><span class="p">},</span><span class="w">
     </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"billing-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Edward Kelly"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"billing-firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Edward"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"billing-lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kelly"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"billing-email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"edward@kelly.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"order-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10114818</span><span class="p">,</span><span class="w">
       </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">160.95</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paid"</span><span class="w">
+      </span><span class="nt">"amount-paid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"299.00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"amount-outstanding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99.00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"amount-earned"</span><span class="p">:</span><span class="w"> </span><span class="mf">280.00</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payment-method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Online"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"224476"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"multi-classes"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"multi-dates"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"multi-ticket-types"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"carts"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Painting Class"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attendees"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Edward Keylly"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"edward@email.com"</span><span class="w">
+  </span><span class="nt">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"carts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.weteachme.com/v1/order/carts?filter[order-id]=224476"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">}]</span><span class="w">
-  </span><span class="p">}]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"attendees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.weteachme.com/v1/order/attendees?filter[order-id]=224476"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"recipients"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.weteachme.com/v1/order/recipients?filter[order-id]=224476"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"payment-activities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.weteachme.com/v1/order/payment-activities?filter[order-id]=224476"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"log-activities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.weteachme.com/v1/order/log-activities?filter[order-id]=224476"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1839,6 +1856,401 @@ You must specify a <code>class relationship</code>.
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">GET https://api.weteachme.com/v1/orders/1231212</code></p>
+
+          <h2 id="read-order-carts">READ Order Carts</h2>
+<pre class="highlight shell"><code>curl 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/order/carts?filter[order-id]=1231212"</span>
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/order/carts?filter[order-id]=1231212"</span><span class="p">,</span> 
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/carts"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Make Coffee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">120.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Normal Ticket"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/carts"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Make Coffee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Early Bird"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"124"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/carts"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gift Voucher"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Make Coffee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"125"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/carts"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Merchandise"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Coffee Beans"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves one order by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.weteachme.com/v1/order/carts?filter[order-id]=1231212</code></p>
+
+          <h2 id="read-order-attendees">READ Order Attendees</h2>
+<pre class="highlight shell"><code>curl 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/order/attendees?filter[order-id]=1231212"</span>
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/order/attendees?filter[order-id]=1231212"</span><span class="p">,</span> 
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/attendees"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Make Coffee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">120.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Normal Ticket"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/attendees"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Make Coffee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Early Bird"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"124"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/attendees"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gift Voucher"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Make Coffee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"125"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/attendees"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Merchandise"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Coffee Beans"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves one order by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.weteachme.com/v1/order/attendees?filter[order-id]=1231212</code></p>
+
+          <h2 id="read-order-recipients">READ Order Recipients</h2>
+<pre class="highlight shell"><code>curl 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/order/recipients?filter[order-id]=1231212"</span>
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/order/recipients?filter[order-id]=1231212"</span><span class="p">,</span> 
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/recipients"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Make Coffee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">120.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Normal Ticket"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/recipients"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Make Coffee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Early Bird"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"124"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/recipients"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gift Voucher"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Make Coffee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"125"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/recipients"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Merchandise"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Coffee Beans"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves one order by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.weteachme.com/v1/order/recipients?filter[order-id]=1231212</code></p>
+
+          <h2 id="read-order-payment-activities">READ Order Payment Activities</h2>
+<pre class="highlight shell"><code>curl 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/order/payment-activities?filter[order-id]=1231212"</span>
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/order/payment-activities?filter[order-id]=1231212"</span><span class="p">,</span> 
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/payment-activities"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Make Coffee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">120.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Normal Ticket"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/payment-activities"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Make Coffee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Early Bird"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"124"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/payment-activities"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gift Voucher"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Make Coffee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"125"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/payment-activities"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Merchandise"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Coffee Beans"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves one order by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.weteachme.com/v1/order/payment-activities?filter[order-id]=1231212</code></p>
+
+          <h2 id="read-order-log-activities">READ Order Log Activities</h2>
+<pre class="highlight shell"><code>curl 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/order/log-activities?filter[order-id]=1231212"</span>
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/order/log-activities?filter[order-id]=1231212"</span><span class="p">,</span> 
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/log-activities"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Make Coffee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">120.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Normal Ticket"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/log-activities"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Make Coffee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Early Bird"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"124"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/log-activities"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gift Voucher"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Make Coffee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"125"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/log-activities"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Merchandise"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Coffee Beans"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.00</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qty"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves one order by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.weteachme.com/v1/order/log-activities?filter[order-id]=1231212</code></p>
 
           <h1 id="transactions">Transactions</h1>
 
