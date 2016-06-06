@@ -29,46 +29,27 @@ HTTParty.get(
       "id":"123",
       "type":"order/payment-activities",
       "attributes": {
-        "type": "Ticket",
+        "type": "Payment",
         "name": "How to Make Coffee",
-        "price": 120.00,
-        "qty": 2,
+        "total": 120.00,
+        "fee": 10.00,
         "datetime": "Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)",
-        "ticket": "Normal Ticket"
+        "payment-method": "Online",
+        "status": "Paid",
+        "due-date": "Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)",
+        "order-id": 1231212
       }
     },
     {
       "id":"123",
       "type":"order/payment-activities",
       "attributes": {
-        "type": "Ticket",
-        "name": "How to Make Coffee",
-        "price": 100.00,
-        "qty": 1,
+        "type": "Refund",
+        "name": "Refund",
+        "total": 100.00,
+        "fee": 0,
         "datetime": "Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)",
-        "ticket": "Early Bird"
-      }
-    },
-    {
-      "id":"124",
-      "type":"order/payment-activities",
-      "attributes": {
-        "type": "Gift Voucher",
-        "name": "How to Make Coffee",
-        "price": 100.00,
-        "qty": 1,
-        "datetime": "Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"
-      }
-    },
-    {
-      "id":"125",
-      "type":"order/payment-activities",
-      "attributes": {
-        "type": "Merchandise",
-        "name": "Coffee Beans",
-        "price": 100.00,
-        "qty": 3,
-        "datetime": "Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"
+        "order-id": 1231212
       }
     }
   ]

@@ -29,46 +29,12 @@ HTTParty.get(
       "id":"123",
       "type":"order/recipients",
       "attributes": {
-        "type": "Ticket",
-        "name": "How to Make Coffee",
-        "price": 120.00,
-        "qty": 2,
-        "datetime": "Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)",
-        "ticket": "Normal Ticket"
-      }
-    },
-    {
-      "id":"123",
-      "type":"order/recipients",
-      "attributes": {
-        "type": "Ticket",
-        "name": "How to Make Coffee",
-        "price": 100.00,
-        "qty": 1,
-        "datetime": "Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)",
-        "ticket": "Early Bird"
-      }
-    },
-    {
-      "id":"124",
-      "type":"order/recipients",
-      "attributes": {
-        "type": "Gift Voucher",
-        "name": "How to Make Coffee",
-        "price": 100.00,
-        "qty": 1,
-        "datetime": "Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"
-      }
-    },
-    {
-      "id":"125",
-      "type":"order/recipients",
-      "attributes": {
-        "type": "Merchandise",
-        "name": "Coffee Beans",
-        "price": 100.00,
-        "qty": 3,
-        "datetime": "Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"
+        "firstname": "John",
+        "lastname": "Snow",
+        "email": "john@got.com",
+        "code": "64533838",
+        "delivery-date": "Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)",
+        "order-id": "1231212"
       }
     }
   ]
