@@ -114,33 +114,56 @@ This endpoint retrieves one payment activity by id.
 `GET https://api.weteachme.com/v1/order/payment-activities/123123`
 
 
-## Send Payment Confirmation Email
+## Adjust Payment Details
 
 ```shell
-curl 
-  -X PATCH
+curl -X PATCH 
+  -H "Content-Type: application/vnd.api+json" 
   -H "Accept: application/vnd.api+json" 
-  "https://api.weteachme.com/v1/order/payment-activities/send-confirmation-email
+  "https://api.weteachme.com/v1/order/payment-activities/123123/adjust-payment" 
+  -d '{
+    "data": {
+      "id": 12,
+      "type": "order/payment-activities",
+      "attributes": {
+        "total": 122.30,
+        "due-date": "12/12/2016",
+        "note": "this is some note"
+      }
+    }
+  }'
   -H "API-KEY: meowmeowmeow"
 ```
 
 ```ruby
 require 'httparty'
 
+payload = {
+  "data": {
+    "id": 12,
+    "type": "order/payment-activities",
+    "attributes": {
+      "total": 122.30,
+      "due-date": "12/12/2016",
+      "note": "this is some note"
+    }
+  }
+}
 HTTParty.patch(
-  "https://api.weteachme.com/v1/order/payment-activities/123123/send-confirmation-email
+  "https://api.weteachme.com/v1/order/payment-activities/123123/adjust-payment", 
+  payload,
   headers: {
+    "Content-Type" => 'application/vnd.api+json', 
     "Accept" => 'application/vnd.api+json', 
     "API-KEY" => meowmeowmeow"
   }
 );
-
 ```
 
 > The above command returns no content with 204 HTTP Status
 
 
-This endpoint sends reminder email by payment activity id.
+This endpoint adjust payment by id.
 
 ### HTTP Request
 
