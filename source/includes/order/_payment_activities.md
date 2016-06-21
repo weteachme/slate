@@ -56,7 +56,7 @@ HTTParty.get(
 }
 ```
 
-This endpoint retrieves one order by id.
+This endpoint retrieves payment activities by order id.
 
 ### HTTP Request
 
@@ -114,21 +114,21 @@ This endpoint retrieves one payment activity by id.
 `GET https://api.weteachme.com/v1/order/payment-activities/123123`
 
 
-## Send Payment Reminder Email
+## Send Payment Confirmation Email
 
 ```shell
 curl 
-  -X PUT
+  -X PATCH
   -H "Accept: application/vnd.api+json" 
-  "https://api.weteachme.com/v1/order/payment-activities/send-reminder-email
+  "https://api.weteachme.com/v1/order/payment-activities/send-confirmation-email
   -H "API-KEY: meowmeowmeow"
 ```
 
 ```ruby
 require 'httparty'
 
-HTTParty.put(
-  "https://api.weteachme.com/v1/order/payment-activities/123123
+HTTParty.patch(
+  "https://api.weteachme.com/v1/order/payment-activities/123123/send-confirmation-email
   headers: {
     "Accept" => 'application/vnd.api+json', 
     "API-KEY" => meowmeowmeow"
@@ -144,23 +144,56 @@ This endpoint sends reminder email by payment activity id.
 
 ### HTTP Request
 
-`PUT https://api.weteachme.com/v1/order/payment-activities/123123/send-reminder-email`
+`PATCH https://api.weteachme.com/v1/order/payment-activities/123123/send-confirmation-email`
 
-## Mark Payment as Paid
+
+## Send Payment Reminder Email
 
 ```shell
 curl 
-  -X PUT
+  -X PATCH
   -H "Accept: application/vnd.api+json" 
-  "https://api.weteachme.com/v1/order/payment-activities/mark-as-paid
+  "https://api.weteachme.com/v1/order/payment-activities/send-reminder-email
   -H "API-KEY: meowmeowmeow"
 ```
 
 ```ruby
 require 'httparty'
 
-HTTParty.put(
-  "https://api.weteachme.com/v1/order/payment-activities/123123
+HTTParty.patch(
+  "https://api.weteachme.com/v1/order/payment-activities/123123/send-reminder-email
+  headers: {
+    "Accept" => 'application/vnd.api+json', 
+    "API-KEY" => meowmeowmeow"
+  }
+);
+
+```
+
+> The above command returns no content with 204 HTTP Status
+
+
+This endpoint sends reminder email by payment activity id.
+
+### HTTP Request
+
+`PATCH https://api.weteachme.com/v1/order/payment-activities/123123/send-reminder-email`
+
+## Mark Payment as Paid
+
+```shell
+curl 
+  -X PATCH
+  -H "Accept: application/vnd.api+json" 
+  "https://api.weteachme.com/v1/order/payment-activities/123123/mark-as-paid
+  -H "API-KEY: meowmeowmeow"
+```
+
+```ruby
+require 'httparty'
+
+HTTParty.patch(
+  "https://api.weteachme.com/v1/order/payment-activities/123123/mark-as-paid
   headers: {
     "Accept" => 'application/vnd.api+json', 
     "API-KEY" => meowmeowmeow"
@@ -175,24 +208,24 @@ This endpoint marks payment activity as paid by id.
 
 ### HTTP Request
 
-`PUT https://api.weteachme.com/v1/order/payment-activities/123123/mark-as-paid`
+`PATCH https://api.weteachme.com/v1/order/payment-activities/123123/mark-as-paid`
 
 
 ## Cancel Payment
 
 ```shell
 curl 
-  -X PUT
+  -X PATCH
   -H "Accept: application/vnd.api+json" 
-  "https://api.weteachme.com/v1/order/payment-activities/cancel-payment
+  "https://api.weteachme.com/v1/order/payment-activities/123123/cancel-payment
   -H "API-KEY: meowmeowmeow"
 ```
 
 ```ruby
 require 'httparty'
 
-HTTParty.put(
-  "https://api.weteachme.com/v1/order/payment-activities/123123
+HTTParty.patch(
+  "https://api.weteachme.com/v1/order/payment-activities/123123/cancel-payment
   headers: {
     "Accept" => 'application/vnd.api+json', 
     "API-KEY" => meowmeowmeow"
@@ -207,4 +240,4 @@ This endpoint cancels payment by id.
 
 ### HTTP Request
 
-`PUT https://api.weteachme.com/v1/order/payment-activities/123123/cancel-payment`
+`PATCH https://api.weteachme.com/v1/order/payment-activities/123123/cancel-payment`
