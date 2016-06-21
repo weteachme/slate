@@ -1976,11 +1976,177 @@ You must specify a <code>class relationship</code>.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves one order by id.</p>
+<p>This endpoint retrieves attendees by order id.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">GET https://api.weteachme.com/v1/order/attendees?filter[order-id]=1231212</code></p>
+
+<h2 id="read-order-attendee-by-id">READ Order Attendee By Id</h2>
+<pre class="highlight shell"><code>curl 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/order/attendees/123123
+  -H "</span>API-KEY: meowmeowmeow<span class="s2">"
+</span></code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/order/attendees/123123
+  headers: {
+    "</span><span class="no">Accept</span><span class="s2">" =&gt; 'application/vnd.api+json', 
+    "</span><span class="no">API</span><span class="o">-</span><span class="no">KEY</span><span class="s2">" =&gt; meowmeowmeow"</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order/attendees"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Snow"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@got.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ticket-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Normal Price"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"class-date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"class-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Revive From Dead"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"order-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1231212</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves one payment activity by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.weteachme.com/v1/order/attendees/123123</code></p>
+
+<h2 id="update-attendee-by-id">Update Attendee By Id</h2>
+<pre class="highlight shell"><code>curl -X PATCH 
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/order/attendees/12"</span> 
+  -d <span class="s1">'{
+    "data": {
+      "id": 12,
+      "type": "order/attendees",
+      "attributes": {
+        "firstname": "Wayne",
+        "lastname": "Rooney",
+        "email": "wayne@rooney.com",
+        "mobile": "0433 333 333",
+        "requirements": "Gluten Free",
+        "medical": "None",
+        "emergency_contact": "Some Contacts",
+        "all updatable fields": "..."
+      }
+    }
+  }'</span>
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"order/attendees"</span><span class="p">,</span>
+    <span class="s2">"attributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"firstname"</span><span class="p">:</span> <span class="s2">"Wayne"</span><span class="p">,</span>
+      <span class="s2">"lastname"</span><span class="p">:</span> <span class="s2">"Rooney"</span><span class="p">,</span>
+      <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"wayne@rooney.com"</span><span class="p">,</span>
+      <span class="s2">"mobile"</span><span class="p">:</span> <span class="s2">"0433 333 333"</span><span class="p">,</span>
+      <span class="s2">"requirements"</span><span class="p">:</span> <span class="s2">"Gluten Free"</span><span class="p">,</span>
+      <span class="s2">"medical"</span><span class="p">:</span> <span class="s2">"None"</span><span class="p">,</span>
+      <span class="s2">"emergency_contact"</span><span class="p">:</span> <span class="s2">"Some Contacts"</span><span class="p">,</span>
+      <span class="s2">"all updatable fields"</span><span class="p">:</span> <span class="s2">"..."</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">patch</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/order/attendees/12"</span><span class="p">,</span> 
+  <span class="n">payload</span><span class="p">,</span>
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Content-Type"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
+
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns HTTP/1.1 204 No Content</p>
+</blockquote>
+
+<p>This endpoint updates one attendee by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://api.weteachme.com/v1/order/attendees/123123</code></p>
+
+<h2 id="send-attendee-enrolment-email">Send Attendee Enrolment Email</h2>
+<pre class="highlight shell"><code>curl 
+  -X PATCH
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/order/attendees/123123/send-enrolment-email
+  -H "</span>API-KEY: meowmeowmeow<span class="s2">"
+</span></code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">patch</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/order/attendees/123123/send-enrolment-email
+  headers: {
+    "</span><span class="no">Accept</span><span class="s2">" =&gt; 'application/vnd.api+json', 
+    "</span><span class="no">API</span><span class="o">-</span><span class="no">KEY</span><span class="s2">" =&gt; meowmeowmeow"</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+
+</code></pre>
+
+<blockquote>
+<p>The above command returns no content with 204 HTTP Status</p>
+</blockquote>
+
+<p>This endpoint sends enrolment email by payment activity id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://api.weteachme.com/v1/order/attendees/123123/send-enrolment-email</code></p>
+
+<h2 id="cancel-attendee-spot">Cancel Attendee Spot</h2>
+<pre class="highlight shell"><code>curl 
+  -X PATCH
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/order/attendees/123123/cancel-spot
+  -H "</span>API-KEY: meowmeowmeow<span class="s2">"
+</span></code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">patch</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/order/attendees/123123/cancel-spot
+  headers: {
+    "</span><span class="no">Accept</span><span class="s2">" =&gt; 'application/vnd.api+json', 
+    "</span><span class="no">API</span><span class="o">-</span><span class="no">KEY</span><span class="s2">" =&gt; meowmeowmeow"</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+
+</code></pre>
+
+<blockquote>
+<p>The above command returns no content with 204 HTTP Status</p>
+</blockquote>
+
+<p>This endpoint cancels spot by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://api.weteachme.com/v1/order/attendees/123123/cancel-spot</code></p>
 
           <h2 id="read-order-recipients">READ Order Recipients</h2>
 <pre class="highlight shell"><code>curl 
@@ -2081,7 +2247,7 @@ You must specify a <code>class relationship</code>.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves one order by id.</p>
+<p>This endpoint retrieves payment activities by order id.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2133,17 +2299,17 @@ You must specify a <code>class relationship</code>.
 
 <p><code class="prettyprint">GET https://api.weteachme.com/v1/order/payment-activities/123123</code></p>
 
-<h2 id="send-payment-reminder-email">Send Payment Reminder Email</h2>
+<h2 id="send-payment-confirmation-email">Send Payment Confirmation Email</h2>
 <pre class="highlight shell"><code>curl 
-  -X PUT
+  -X PATCH
   -H <span class="s2">"Accept: application/vnd.api+json"</span> 
-  <span class="s2">"https://api.weteachme.com/v1/order/payment-activities/send-reminder-email
+  <span class="s2">"https://api.weteachme.com/v1/order/payment-activities/send-confirmation-email
   -H "</span>API-KEY: meowmeowmeow<span class="s2">"
 </span></code></pre>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
 
-<span class="no">HTTParty</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
-  <span class="s2">"https://api.weteachme.com/v1/order/payment-activities/123123
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">patch</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/order/payment-activities/123123/send-confirmation-email
   headers: {
     "</span><span class="no">Accept</span><span class="s2">" =&gt; 'application/vnd.api+json', 
     "</span><span class="no">API</span><span class="o">-</span><span class="no">KEY</span><span class="s2">" =&gt; meowmeowmeow"</span>
@@ -2160,19 +2326,48 @@ You must specify a <code>class relationship</code>.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT https://api.weteachme.com/v1/order/payment-activities/123123/send-reminder-email</code></p>
+<p><code class="prettyprint">PATCH https://api.weteachme.com/v1/order/payment-activities/123123/send-confirmation-email</code></p>
 
-<h2 id="mark-payment-as-paid">Mark Payment as Paid</h2>
+<h2 id="send-payment-reminder-email">Send Payment Reminder Email</h2>
 <pre class="highlight shell"><code>curl 
-  -X PUT
+  -X PATCH
   -H <span class="s2">"Accept: application/vnd.api+json"</span> 
-  <span class="s2">"https://api.weteachme.com/v1/order/payment-activities/mark-as-paid
+  <span class="s2">"https://api.weteachme.com/v1/order/payment-activities/send-reminder-email
   -H "</span>API-KEY: meowmeowmeow<span class="s2">"
 </span></code></pre>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
 
-<span class="no">HTTParty</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
-  <span class="s2">"https://api.weteachme.com/v1/order/payment-activities/123123
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">patch</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/order/payment-activities/123123/send-reminder-email
+  headers: {
+    "</span><span class="no">Accept</span><span class="s2">" =&gt; 'application/vnd.api+json', 
+    "</span><span class="no">API</span><span class="o">-</span><span class="no">KEY</span><span class="s2">" =&gt; meowmeowmeow"</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+
+</code></pre>
+
+<blockquote>
+<p>The above command returns no content with 204 HTTP Status</p>
+</blockquote>
+
+<p>This endpoint sends reminder email by payment activity id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://api.weteachme.com/v1/order/payment-activities/123123/send-reminder-email</code></p>
+
+<h2 id="mark-payment-as-paid">Mark Payment as Paid</h2>
+<pre class="highlight shell"><code>curl 
+  -X PATCH
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/order/payment-activities/123123/mark-as-paid
+  -H "</span>API-KEY: meowmeowmeow<span class="s2">"
+</span></code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">patch</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/order/payment-activities/123123/mark-as-paid
   headers: {
     "</span><span class="no">Accept</span><span class="s2">" =&gt; 'application/vnd.api+json', 
     "</span><span class="no">API</span><span class="o">-</span><span class="no">KEY</span><span class="s2">" =&gt; meowmeowmeow"</span>
@@ -2189,19 +2384,19 @@ You must specify a <code>class relationship</code>.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT https://api.weteachme.com/v1/order/payment-activities/123123/mark-as-paid</code></p>
+<p><code class="prettyprint">PATCH https://api.weteachme.com/v1/order/payment-activities/123123/mark-as-paid</code></p>
 
 <h2 id="cancel-payment">Cancel Payment</h2>
 <pre class="highlight shell"><code>curl 
-  -X PUT
+  -X PATCH
   -H <span class="s2">"Accept: application/vnd.api+json"</span> 
-  <span class="s2">"https://api.weteachme.com/v1/order/payment-activities/cancel-payment
+  <span class="s2">"https://api.weteachme.com/v1/order/payment-activities/123123/cancel-payment
   -H "</span>API-KEY: meowmeowmeow<span class="s2">"
 </span></code></pre>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
 
-<span class="no">HTTParty</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
-  <span class="s2">"https://api.weteachme.com/v1/order/payment-activities/123123
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">patch</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/order/payment-activities/123123/cancel-payment
   headers: {
     "</span><span class="no">Accept</span><span class="s2">" =&gt; 'application/vnd.api+json', 
     "</span><span class="no">API</span><span class="o">-</span><span class="no">KEY</span><span class="s2">" =&gt; meowmeowmeow"</span>
@@ -2218,7 +2413,7 @@ You must specify a <code>class relationship</code>.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT https://api.weteachme.com/v1/order/payment-activities/123123/cancel-payment</code></p>
+<p><code class="prettyprint">PATCH https://api.weteachme.com/v1/order/payment-activities/123123/cancel-payment</code></p>
 
           <h2 id="read-order-log-activities">READ Order Log Activities</h2>
 <pre class="highlight shell"><code>curl 
