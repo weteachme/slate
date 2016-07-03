@@ -15,11 +15,11 @@ includes:
   - attendees
   - merchandises
   - orders
-  - order/carts
-  - order/attendees
-  - order/recipients
-  - order/payment_activities
-  - order/log_activities
+  - orders/carts
+  - orders/attendees
+  - orders/recipients
+  - orders/payment_activities
+  - orders/log_activities
   - transactions
   - errors
 

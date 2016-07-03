@@ -3,7 +3,7 @@
 ```shell
 curl 
   -H "Accept: application/vnd.api+json" 
-  "https://api.weteachme.com/v1/order/log-activities?filter[order-id]=1231212"
+  "https://api.weteachme.com/v1/orders/1231212/log-activities"
   -H "API-KEY: meowmeowmeow"
 ```
 
@@ -11,7 +11,7 @@ curl
 require 'httparty'
 
 HTTParty.get(
-  "https://api.weteachme.com/v1/order/log-activities?filter[order-id]=1231212", 
+  "https://api.weteachme.com/v1/orders/1231212/log-activities",
   headers: {
     "Accept" => 'application/vnd.api+json', 
     "API-KEY" => meowmeowmeow"
@@ -27,7 +27,7 @@ HTTParty.get(
   "data": [
     {
       "id":"123",
-      "type":"order/log-activities",
+      "type":"orders/log-activities",
       "attributes": {
         "type": "Payment Updated",
         "who": "John Snow",
@@ -47,5 +47,5 @@ This endpoint retrieves one order by id.
 
 ### HTTP Request
 
-`GET https://api.weteachme.com/v1/order/log-activities?filter[order-id]=1231212`
+`GET https://api.weteachme.com/v1/orders/1231212/log-activities`
 

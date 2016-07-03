@@ -3,7 +3,7 @@
 ```shell
 curl 
   -H "Accept: application/vnd.api+json" 
-  "https://api.weteachme.com/v1/order/attendees?filter[order-id]=1231212"
+  "https://api.weteachme.com/v1/orders/1231212/attendees"
   -H "API-KEY: meowmeowmeow"
 ```
 
@@ -11,7 +11,7 @@ curl
 require 'httparty'
 
 HTTParty.get(
-  "https://api.weteachme.com/v1/order/attendees?filter[order-id]=1231212", 
+  "https://api.weteachme.com/v1/orders/1231212/attendees",
   headers: {
     "Accept" => 'application/vnd.api+json', 
     "API-KEY" => meowmeowmeow"
@@ -46,14 +46,14 @@ This endpoint retrieves attendees by order id.
 
 ### HTTP Request
 
-`GET https://api.weteachme.com/v1/order/attendees?filter[order-id]=1231212`
+`GET https://api.weteachme.com/v1/orders/1231212/attendees`
 
 ## READ Order Attendee By Id
 
 ```shell
 curl 
   -H "Accept: application/vnd.api+json" 
-  "https://api.weteachme.com/v1/order/attendees/123123
+  "https://api.weteachme.com/v1/orders/attendees/123123
   -H "API-KEY: meowmeowmeow"
 ```
 
@@ -61,7 +61,7 @@ curl
 require 'httparty'
 
 HTTParty.get(
-  "https://api.weteachme.com/v1/order/attendees/123123
+  "https://api.weteachme.com/v1/orders/attendees/123123
   headers: {
     "Accept" => 'application/vnd.api+json', 
     "API-KEY" => meowmeowmeow"
@@ -94,7 +94,7 @@ This endpoint retrieves one payment activity by id.
 
 ### HTTP Request
 
-`GET https://api.weteachme.com/v1/order/attendees/123123`
+`GET https://api.weteachme.com/v1/orders/attendees/123123`
 
 ## Update Attendee By Id
 
@@ -102,7 +102,7 @@ This endpoint retrieves one payment activity by id.
 curl -X PATCH 
   -H "Content-Type: application/vnd.api+json" 
   -H "Accept: application/vnd.api+json" 
-  "https://api.weteachme.com/v1/order/attendees/12" 
+  "https://api.weteachme.com/v1/orders/attendees/12" 
   -d '{
     "data": {
       "id": 12,
@@ -142,7 +142,7 @@ payload = {
   }
 }
 HTTParty.patch(
-  "https://api.weteachme.com/v1/order/attendees/12", 
+  "https://api.weteachme.com/v1/orders/attendees/12", 
   payload,
   headers: {
     "Content-Type" => 'application/vnd.api+json', 
@@ -154,31 +154,31 @@ HTTParty.patch(
 
 ```
 
-> The above command returns HTTP/1.1 204 No Content
+> The above command returns HTTP/1.1 200
 
 This endpoint updates one attendee by id.
 
 
 ### HTTP Request
 
-`PATCH https://api.weteachme.com/v1/order/attendees/123123`
+`PATCH https://api.weteachme.com/v1/orders/attendees/123123`
 
 
 ## Send Attendee Enrolment Email
 
 ```shell
 curl 
-  -X PATCH
+  -X POST
   -H "Accept: application/vnd.api+json" 
-  "https://api.weteachme.com/v1/order/attendees/123123/send-enrolment-email
+  "https://api.weteachme.com/v1/orders/attendees/123123/enrolment-emails
   -H "API-KEY: meowmeowmeow"
 ```
 
 ```ruby
 require 'httparty'
 
-HTTParty.patch(
-  "https://api.weteachme.com/v1/order/attendees/123123/send-enrolment-email
+HTTParty.post(
+  "https://api.weteachme.com/v1/orders/attendees/123123/enrolment-emails
   headers: {
     "Accept" => 'application/vnd.api+json', 
     "API-KEY" => meowmeowmeow"
@@ -187,31 +187,31 @@ HTTParty.patch(
 
 ```
 
-> The above command returns no content with 204 HTTP Status
+> The above command returns HTTP/1.1 200
 
 
 This endpoint sends enrolment email by payment activity id.
 
 ### HTTP Request
 
-`PATCH https://api.weteachme.com/v1/order/attendees/123123/send-enrolment-email`
+`POST https://api.weteachme.com/v1/orders/attendees/123123/enrolment-emails`
 
 
 ## Cancel Attendee Spot
 
 ```shell
 curl 
-  -X PATCH
+  -X POST
   -H "Accept: application/vnd.api+json" 
-  "https://api.weteachme.com/v1/order/attendees/123123/cancel-spot
+  "https://api.weteachme.com/v1/orders/attendees/123123/spot-cancellations"
   -H "API-KEY: meowmeowmeow"
 ```
 
 ```ruby
 require 'httparty'
 
-HTTParty.patch(
-  "https://api.weteachme.com/v1/order/attendees/123123/cancel-spot
+HTTParty.post(
+  "https://api.weteachme.com/v1/orders/attendees/123123/spot-cancellations",
   headers: {
     "Accept" => 'application/vnd.api+json', 
     "API-KEY" => meowmeowmeow"
@@ -220,10 +220,10 @@ HTTParty.patch(
 
 ```
 
-> The above command returns no content with 204 HTTP Status
+> The above command returns HTTP/1.1 200
 
 This endpoint cancels spot by id.
 
 ### HTTP Request
 
-`PATCH https://api.weteachme.com/v1/order/attendees/123123/cancel-spot`
+`POST https://api.weteachme.com/v1/orders/attendees/123123/spot-cancellations`
