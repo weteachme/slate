@@ -1857,6 +1857,60 @@ You must specify a <code>class relationship</code>.
 
 <p><code class="prettyprint">GET https://api.weteachme.com/v1/orders/1231212</code></p>
 
+<h2 id="update-order-by-id">Update Order By Id</h2>
+<pre class="highlight shell"><code>curl -X PATCH 
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/orders/12123"</span> 
+  -d <span class="s1">'{
+    "data": {
+      "id": 12,
+      "type": "orders",
+      "attributes": {
+        "billing-firstname": "Wayne",
+        "billing-lastname": "Rooney",
+        "billing-email": "wayne@rooney.com"
+      }
+    }
+  }'</span>
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"orders"</span><span class="p">,</span>
+    <span class="s2">"attributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"billing-firstname"</span><span class="p">:</span> <span class="s2">"Wayne"</span><span class="p">,</span>
+      <span class="s2">"billing-lastname"</span><span class="p">:</span> <span class="s2">"Rooney"</span><span class="p">,</span>
+      <span class="s2">"billing-email"</span><span class="p">:</span> <span class="s2">"wayne@rooney.com"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">patch</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/orders/123123"</span><span class="p">,</span> 
+  <span class="n">payload</span><span class="p">,</span>
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Content-Type"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
+
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns HTTP/1.1 204</p>
+</blockquote>
+
+<p>This endpoint updates one recipient by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://api.weteachme.com/v1/orders/123123</code></p>
+
           <h2 id="read-order-carts">READ Order Carts</h2>
 <pre class="highlight shell"><code>curl 
   -H <span class="s2">"Accept: application/vnd.api+json"</span> 
@@ -2228,6 +2282,164 @@ You must specify a <code>class relationship</code>.
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">GET https://api.weteachme.com/v1/orders/123123/recipients</code></p>
+
+<h2 id="update-recipient-by-id">Update Recipient By Id</h2>
+<pre class="highlight shell"><code>curl -X PATCH 
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/orders/recipients/12"</span> 
+  -d <span class="s1">'{
+    "data": {
+      "id": 12,
+      "type": "order/recipients",
+      "attributes": {
+        "firstname": "Wayne",
+        "lastname": "Rooney",
+        "email": "wayne@rooney.com",
+        "mobile": "0433 333 333",
+        "requirements": "Gluten Free",
+        "medical": "None",
+        "emergency_contact": "Some Contacts",
+        "all updatable fields": "..."
+      }
+    }
+  }'</span>
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"order/recipients"</span><span class="p">,</span>
+    <span class="s2">"attributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"firstname"</span><span class="p">:</span> <span class="s2">"Wayne"</span><span class="p">,</span>
+      <span class="s2">"lastname"</span><span class="p">:</span> <span class="s2">"Rooney"</span><span class="p">,</span>
+      <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"wayne@rooney.com"</span><span class="p">,</span>
+      <span class="s2">"mobile"</span><span class="p">:</span> <span class="s2">"0433 333 333"</span><span class="p">,</span>
+      <span class="s2">"requirements"</span><span class="p">:</span> <span class="s2">"Gluten Free"</span><span class="p">,</span>
+      <span class="s2">"medical"</span><span class="p">:</span> <span class="s2">"None"</span><span class="p">,</span>
+      <span class="s2">"emergency_contact"</span><span class="p">:</span> <span class="s2">"Some Contacts"</span><span class="p">,</span>
+      <span class="s2">"all updatable fields"</span><span class="p">:</span> <span class="s2">"..."</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">patch</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/orders/recipients/12"</span><span class="p">,</span> 
+  <span class="n">payload</span><span class="p">,</span>
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Content-Type"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
+
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns HTTP/1.1 204</p>
+</blockquote>
+
+<p>This endpoint updates one recipient by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://api.weteachme.com/v1/orders/recipients/123123</code></p>
+
+<h2 id="send-recipient-gift-voucher-email">Send Recipient Gift Voucher Email</h2>
+<pre class="highlight shell"><code>curl 
+  -X POST
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/orders/recipients/123123/gift-voucher-emails
+  -H "</span>API-KEY: meowmeowmeow<span class="s2">"
+</span></code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/orders/recipients/123123/gift-voucher-emails
+  headers: {
+    "</span><span class="no">Accept</span><span class="s2">" =&gt; 'application/vnd.api+json', 
+    "</span><span class="no">API</span><span class="o">-</span><span class="no">KEY</span><span class="s2">" =&gt; meowmeowmeow"</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123123</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"gift-voucher-emails"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
+         </span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"http://api-dev.weteachme.com:3000/v1/orders/gift-voucher-emails/123123"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"relationships"</span><span class="p">:{</span><span class="w">
+         </span><span class="nt">"payment-activity"</span><span class="p">:{</span><span class="w">
+            </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
+               </span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"http://api-dev.weteachme.com:3000/v1/orders/gift-voucher-emails/123123/relationships/recipient"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"related"</span><span class="p">:</span><span class="s2">"http://api-dev.weteachme.com:3000/v1/orders/gift-voucher-emails/123123/recipient"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint sends gift-voucher email by payment activity id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.weteachme.com/v1/orders/recipients/123123/gift-voucher-emails</code></p>
+
+<h2 id="cancel-recipient-gift-voucher">Cancel Recipient Gift Voucher</h2>
+<pre class="highlight shell"><code>curl 
+  -X POST
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/orders/recipients/123123/gift-voucher-cancellations"</span>
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/orders/recipients/123123/gift-voucher-cancellations"</span><span class="p">,</span>
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123123</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"gift-voucher-cancellations"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
+         </span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"http://api-dev.weteachme.com:3000/v1/orders/gift-voucher-cancellations/123123"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"relationships"</span><span class="p">:{</span><span class="w">
+         </span><span class="nt">"payment-activity"</span><span class="p">:{</span><span class="w">
+            </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
+               </span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"http://api-dev.weteachme.com:3000/v1/orders/gift-voucher-cancellations/123123/relationships/recipient"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"related"</span><span class="p">:</span><span class="s2">"http://api-dev.weteachme.com:3000/v1/orders/gift-voucher-cancellations/123123/recipient"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint cancels gift-voucher by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.weteachme.com/v1/orders/recipients/123123/gift-voucher-cancellations</code></p>
 
           <h2 id="read-order-payment-activities">READ Order Payment Activities</h2>
 <pre class="highlight shell"><code>curl 
