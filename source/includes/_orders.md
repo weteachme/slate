@@ -168,3 +168,59 @@ This endpoint retrieves one order by id.
 
 `GET https://api.weteachme.com/v1/orders/1231212`
 
+## Update Order By Id
+
+```shell
+curl -X PATCH 
+  -H "Content-Type: application/vnd.api+json" 
+  -H "Accept: application/vnd.api+json" 
+  "https://api.weteachme.com/v1/orders/12123" 
+  -d '{
+    "data": {
+      "id": 12,
+      "type": "orders",
+      "attributes": {
+        "billing-firstname": "Wayne",
+        "billing-lastname": "Rooney",
+        "billing-email": "wayne@rooney.com"
+      }
+    }
+  }'
+  -H "API-KEY: meowmeowmeow"
+```
+
+```ruby
+require 'httparty'
+
+payload = {
+  "data": {
+    "id": 12,
+    "type": "orders",
+    "attributes": {
+      "billing-firstname": "Wayne",
+      "billing-lastname": "Rooney",
+      "billing-email": "wayne@rooney.com"
+    }
+  }
+}
+HTTParty.patch(
+  "https://api.weteachme.com/v1/orders/123123", 
+  payload,
+  headers: {
+    "Content-Type" => 'application/vnd.api+json', 
+    "Accept" => 'application/vnd.api+json', 
+    "API-KEY" => meowmeowmeow"
+  }
+);
+
+
+```
+
+> The above command returns HTTP/1.1 204
+
+This endpoint updates one recipient by id.
+
+
+### HTTP Request
+
+`PATCH https://api.weteachme.com/v1/orders/123123`
