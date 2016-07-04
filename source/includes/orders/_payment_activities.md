@@ -160,7 +160,32 @@ HTTParty.post(
 );
 ```
 
-> The above command returns HTTP/1.1 200
+> The above command returns JSON structured like this:
+
+```json
+{
+   "data":{
+      "id":"123123",
+      "type":"payment-adjustments",
+      "links":{
+         "self":"http://api-dev.weteachme.com:3000/v1/orders/payment-adjustments/123123"
+      },
+      "attributes":{
+         "total":40.0,
+         "due-date":"2017-02-01T00:00:00.000+00:00",
+         "note": "this is some note"
+      },
+      "relationships":{
+         "payment-activity":{
+            "links":{
+               "self":"http://api-dev.weteachme.com:3000/v1/orders/payment-adjustments/123123/relationships/payment-activity",
+               "related":"http://api-dev.weteachme.com:3000/v1/orders/payment-adjustments/123123/payment-activity"
+            }
+         }
+      }
+   }
+}
+```
 
 
 This endpoint adjust payment by id.
@@ -193,8 +218,27 @@ HTTParty.post(
 
 ```
 
-> The above command returns HTTP/1.1 200
+> The above command returns JSON structured like this:
 
+```json
+{
+   "data":{
+      "id": 123123,
+      "type":"payment-reminder-emails",
+      "links":{
+         "self":"http://api-dev.weteachme.com:3000/v1/orders/payment-reminder-emails/123123"
+      },
+      "relationships":{
+         "payment-activity":{
+            "links":{
+               "self":"http://api-dev.weteachme.com:3000/v1/orders/payment-reminder-emails/123123/relationships/payment-activity",
+               "related":"http://api-dev.weteachme.com:3000/v1/orders/payment-reminder-emails/123123/payment-activity"
+            }
+         }
+      }
+   }
+}
+```
 
 This endpoint sends reminder email by payment activity id.
 
@@ -225,7 +269,27 @@ HTTParty.post(
 
 ```
 
-> The above command returns HTTP/1.1 200
+> The above command returns JSON structured like this:
+
+```json
+{
+   "data":{
+      "id": 123123,
+      "type":"offline-payments",
+      "links":{
+         "self":"http://api-dev.weteachme.com:3000/v1/orders/offline-payments/123123"
+      },
+      "relationships":{
+         "payment-activity":{
+            "links":{
+               "self":"http://api-dev.weteachme.com:3000/v1/orders/offline-payments/123123/relationships/payment-activity",
+               "related":"http://api-dev.weteachme.com:3000/v1/orders/offline-payments/123123/payment-activity"
+            }
+         }
+      }
+   }
+}
+```
 
 This endpoint marks payment activity as paid by id.
 
@@ -257,7 +321,27 @@ HTTParty.post(
 
 ```
 
-> The above command returns HTTP/1.1 200
+> The above command returns JSON structured like this:
+
+```json
+{
+   "data":{
+      "id": 123123,
+      "type":"payment-cancellations",
+      "links":{
+         "self":"http://api-dev.weteachme.com:3000/v1/orders/payment-cancellations/123123"
+      },
+      "relationships":{
+         "payment-activity":{
+            "links":{
+               "self":"http://api-dev.weteachme.com:3000/v1/orders/payment-cancellations/123123/relationships/payment-activity",
+               "related":"http://api-dev.weteachme.com:3000/v1/orders/payment-cancellations/123123/payment-activity"
+            }
+         }
+      }
+   }
+}
+```
 
 This endpoint cancels payment by id.
 
