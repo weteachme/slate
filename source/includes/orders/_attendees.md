@@ -154,7 +154,7 @@ HTTParty.patch(
 
 ```
 
-> The above command returns HTTP/1.1 200
+> The above command returns HTTP/1.1 204
 
 This endpoint updates one attendee by id.
 
@@ -187,7 +187,27 @@ HTTParty.post(
 
 ```
 
-> The above command returns HTTP/1.1 200
+> The above command returns JSON structured like this:
+
+```json
+{
+   "data":{
+      "id": 123123,
+      "type":"enrolment-emails",
+      "links":{
+         "self":"http://api-dev.weteachme.com:3000/v1/orders/enrolment-emails/123123"
+      },
+      "relationships":{
+         "payment-activity":{
+            "links":{
+               "self":"http://api-dev.weteachme.com:3000/v1/orders/enrolment-emails/123123/relationships/attendee",
+               "related":"http://api-dev.weteachme.com:3000/v1/orders/enrolment-emails/123123/attendee"
+            }
+         }
+      }
+   }
+}
+```
 
 
 This endpoint sends enrolment email by payment activity id.
@@ -220,7 +240,27 @@ HTTParty.post(
 
 ```
 
-> The above command returns HTTP/1.1 200
+> The above command returns JSON structured like this:
+
+```json
+{
+   "data":{
+      "id": 123123,
+      "type":"spot-cancellations",
+      "links":{
+         "self":"http://api-dev.weteachme.com:3000/v1/orders/spot-cancellations/123123"
+      },
+      "relationships":{
+         "payment-activity":{
+            "links":{
+               "self":"http://api-dev.weteachme.com:3000/v1/orders/spot-cancellations/123123/relationships/attendee",
+               "related":"http://api-dev.weteachme.com:3000/v1/orders/spot-cancellations/123123/attendee"
+            }
+         }
+      }
+   }
+}
+```
 
 This endpoint cancels spot by id.
 
