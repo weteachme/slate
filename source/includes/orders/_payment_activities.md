@@ -195,6 +195,53 @@ This endpoint adjust payment by id.
 `POST https://api.weteachme.com/v1/orders/payment-activities/123123/payment-adjustments`
 
 
+## Send Payment Confirmation Email
+
+```shell
+curl 
+  -X POST
+  -H "Accept: application/vnd.api+json" 
+  "https://api.weteachme.com/v1/orders/payment-activities/123123/payment-confirmation-emails"
+  -H "API-KEY: meowmeowmeow"
+```
+
+```ruby
+require 'httparty'
+
+HTTParty.post(
+  "https://api.weteachme.com/v1/orders/payment-activities/123123/payment-confirmation-emails",
+  headers: {
+    "Accept" => 'application/vnd.api+json', 
+    "API-KEY" => meowmeowmeow"
+  }
+);
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "data":{
+      "id": 123123,
+      "type":"payment-confirmation-emails",
+      "links":{
+         "self":"http://api-dev.weteachme.com:3000/v1/orders/payment-confirmation-emails/123123"
+      },
+      "relationships":{
+         "payment-activity":{
+            "links":{
+               "self":"http://api-dev.weteachme.com:3000/v1/orders/payment-confirmation-emails/123123/relationships/payment-activity",
+               "related":"http://api-dev.weteachme.com:3000/v1/orders/payment-confirmation-emails/123123/payment-activity"
+            }
+         }
+      }
+   }
+}
+```
+
+This endpoint sends confirmation email by payment activity id.
+
 ## Send Payment Reminder Email
 
 ```shell
