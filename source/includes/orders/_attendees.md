@@ -96,17 +96,16 @@ This endpoint retrieves one payment activity by id.
 
 `GET https://api.weteachme.com/v1/orders/attendees/123123`
 
-## Update Attendee By Id
+## Update Attendee Info
 
 ```shell
-curl -X PATCH 
+curl -X POST
   -H "Content-Type: application/vnd.api+json" 
   -H "Accept: application/vnd.api+json" 
-  "https://api.weteachme.com/v1/orders/attendees/12" 
+  "https://api.weteachme.com/v1/orders/attendees/12/attendee-infos" 
   -d '{
     "data": {
-      "id": 12,
-      "type": "order/attendees",
+      "type": "order/attendee-infos",
       "attributes": {
         "firstname": "Wayne",
         "lastname": "Rooney",
@@ -116,6 +115,14 @@ curl -X PATCH
         "medical": "None",
         "emergency_contact": "Some Contacts",
         "all updatable fields": "..."
+      },
+      "relationships":{
+        "attendee":{
+          "data":{
+             "type": "orders/attendees",
+             "id": 12
+          }
+        }
       }
     }
   }'
@@ -127,7 +134,6 @@ require 'httparty'
 
 payload = {
   "data": {
-    "id": 12,
     "type": "order/attendees",
     "attributes": {
       "firstname": "Wayne",
@@ -138,11 +144,19 @@ payload = {
       "medical": "None",
       "emergency_contact": "Some Contacts",
       "all updatable fields": "..."
+    },
+    "relationships":{
+      "attendee":{
+        "data":{
+           "type": "orders/attendees",
+           "id": 12
+        }
+      }
     }
   }
 }
-HTTParty.patch(
-  "https://api.weteachme.com/v1/orders/attendees/12", 
+HTTParty.post(
+  "https://api.weteachme.com/v1/orders/attendees/12/attendee-infos", 
   payload,
   headers: {
     "Content-Type" => 'application/vnd.api+json', 
@@ -154,14 +168,44 @@ HTTParty.patch(
 
 ```
 
-> The above command returns HTTP/1.1 204
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+      "id": 12,
+      "type": "order/attendee-infos",
+      "links":{
+         "self":"http://api-dev.weteachme.com:3000/v1/orders/attendee-infos/12"
+      },
+      "attributes": {
+        "firstname": "Wayne",
+        "lastname": "Rooney",
+        "email": "wayne@rooney.com",
+        "mobile": "0433 333 333",
+        "requirements": "Gluten Free",
+        "medical": "None",
+        "emergency_contact": "Some Contacts",
+        "all updatable fields": "..."
+      },
+      "relationships":{
+         "attendee":{
+            "links":{
+               "self":"http://api-dev.weteachme.com:3000/v1/orders/attendee-infos/123123/relationships/attendee",
+               "related":"http://api-dev.weteachme.com:3000/v1/orders/attendee-infos/123123/attendee"
+            }
+         }
+      }
+    }
+}
+```
 
 This endpoint updates one attendee by id.
 
 
 ### HTTP Request
 
-`PATCH https://api.weteachme.com/v1/orders/attendees/123123`
+`POST https://api.weteachme.com/v1/orders/attendees/12/attendee-infos`
 
 
 ## Send Attendee Enrolment Email

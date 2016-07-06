@@ -212,8 +212,6 @@ HTTParty.patch(
     "API-KEY" => meowmeowmeow"
   }
 );
-
-
 ```
 
 > The above command returns HTTP/1.1 204

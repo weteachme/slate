@@ -47,26 +47,30 @@ This endpoint retrieves one order by id.
 
 `GET https://api.weteachme.com/v1/orders/123123/recipients`
 
-## Update Recipient By Id
+## Update Recipient Info
 
 ```shell
-curl -X PATCH 
+curl -X POST
   -H "Content-Type: application/vnd.api+json" 
   -H "Accept: application/vnd.api+json" 
-  "https://api.weteachme.com/v1/orders/recipients/12" 
+  "https://api.weteachme.com/v1/orders/recipients/12/recipient-infos" 
   -d '{
     "data": {
       "id": 12,
-      "type": "order/recipients",
+      "type": "order/recipient-infos",
       "attributes": {
         "firstname": "Wayne",
         "lastname": "Rooney",
         "email": "wayne@rooney.com",
-        "mobile": "0433 333 333",
-        "requirements": "Gluten Free",
-        "medical": "None",
-        "emergency_contact": "Some Contacts",
-        "all updatable fields": "..."
+        "greeting": "Some Greeting"
+      },
+      "relationships":{
+        "recipient":{
+          "data":{
+             "type": "orders/recipients",
+             "id": 12
+          }
+        }
       }
     }
   }'
@@ -79,21 +83,25 @@ require 'httparty'
 payload = {
   "data": {
     "id": 12,
-    "type": "order/recipients",
+    "type": "order/recipient-infos",
     "attributes": {
       "firstname": "Wayne",
       "lastname": "Rooney",
       "email": "wayne@rooney.com",
-      "mobile": "0433 333 333",
-      "requirements": "Gluten Free",
-      "medical": "None",
-      "emergency_contact": "Some Contacts",
-      "all updatable fields": "..."
+      "greeting": "Some Greeting"
+    },
+    "relationships":{
+      "recipient":{
+        "data":{
+           "type": "orders/recipients",
+           "id": 12
+        }
+      }
     }
   }
 }
-HTTParty.patch(
-  "https://api.weteachme.com/v1/orders/recipients/12", 
+HTTParty.post(
+  "https://api.weteachme.com/v1/orders/recipients/12/recipient-infos", 
   payload,
   headers: {
     "Content-Type" => 'application/vnd.api+json', 
@@ -105,14 +113,40 @@ HTTParty.patch(
 
 ```
 
-> The above command returns HTTP/1.1 204
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+      "id": 12,
+      "type": "order/recipient-infos",
+      "links":{
+         "self":"http://api-dev.weteachme.com:3000/v1/orders/recipient-infos/12"
+      },
+      "attributes": {
+        "firstname": "Wayne",
+        "lastname": "Rooney",
+        "email": "wayne@rooney.com",
+        "greeting": "Some Greetings",
+      },
+      "relationships":{
+         "recipient":{
+            "links":{
+               "self":"http://api-dev.weteachme.com:3000/v1/orders/recipient-infos/123123/relationships/recipient",
+               "related":"http://api-dev.weteachme.com:3000/v1/orders/recipient-infos/123123/recipient"
+            }
+         }
+      }
+    }
+}
+```
 
 This endpoint updates one recipient by id.
 
 
 ### HTTP Request
 
-`PATCH https://api.weteachme.com/v1/orders/recipients/123123`
+`POST https://api.weteachme.com/v1/orders/recipients/123123/recipient-infos`
 
 
 ## Send Recipient Gift Voucher Email
