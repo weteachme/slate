@@ -14,6 +14,7 @@ includes:
   - dates
   - attendees
   - merchandises
+  - class_lists
   - orders
   - orders/carts
   - orders/attendees
