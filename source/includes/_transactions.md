@@ -68,14 +68,15 @@ number     | Default 1
 
 ### Filtering Fields
 
-Parameter     | Type       |  Description
-------------- | ---------- |  -----------
-min-date      | string     |  dd/mm/yyyy
-max-date      | string     |  dd/mm/yyyy
-min-amount    | number     |  
-max-amount    | number     |  
-type          | string     |  Transaction Type (Online, Offline, Withdraw, Subscription, Adjustment)
-order-id      | number     |  Order Id
+Parameter       | Type       |  Description
+-------------   | ---------- |  -----------
+min-date        | string     |  dd/mm/yyyy
+max-date        | string     |  dd/mm/yyyy
+min-amount      | number     |  
+max-amount      | number     |  
+type            | string     |  Transaction Type ( Payment, Refund, Withdraw, Subscription, Adjustment)
+payment-method  | string     |  Online or Offline
+order-id        | number     |  Order Id
 
 ### Sorting Fields
 
