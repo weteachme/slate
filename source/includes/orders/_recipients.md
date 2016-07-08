@@ -183,7 +183,7 @@ HTTParty.post(
          "self":"http://api-dev.weteachme.com:3000/v1/orders/gift-voucher-emails/123123"
       },
       "relationships":{
-         "payment-activity":{
+         "recipient":{
             "links":{
                "self":"http://api-dev.weteachme.com:3000/v1/orders/gift-voucher-emails/123123/relationships/recipient",
                "related":"http://api-dev.weteachme.com:3000/v1/orders/gift-voucher-emails/123123/recipient"
@@ -195,7 +195,7 @@ HTTParty.post(
 ```
 
 
-This endpoint sends gift-voucher email by payment activity id.
+This endpoint sends gift-voucher email by recipient id.
 
 ### HTTP Request
 
@@ -236,7 +236,7 @@ HTTParty.post(
          "self":"http://api-dev.weteachme.com:3000/v1/orders/gift-voucher-cancellations/123123"
       },
       "relationships":{
-         "payment-activity":{
+         "recipient":{
             "links":{
                "self":"http://api-dev.weteachme.com:3000/v1/orders/gift-voucher-cancellations/123123/relationships/recipient",
                "related":"http://api-dev.weteachme.com:3000/v1/orders/gift-voucher-cancellations/123123/recipient"
