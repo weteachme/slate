@@ -15,6 +15,9 @@ includes:
   - attendees
   - merchandises
   - class_lists
+  - class_lists/emails
+  - class_lists/cancellations
+  - class_lists/transfers
   - orders
   - orders/carts
   - orders/attendees

@@ -90,7 +90,7 @@ HTTParty.get(
 }
 ```
 
-This endpoint retrieves one payment activity by id.
+This endpoint retrieves one attendee by id.
 
 ### HTTP Request
 
@@ -242,7 +242,7 @@ HTTParty.post(
          "self":"http://api-dev.weteachme.com:3000/v1/orders/enrolment-emails/123123"
       },
       "relationships":{
-         "payment-activity":{
+         "attendee":{
             "links":{
                "self":"http://api-dev.weteachme.com:3000/v1/orders/enrolment-emails/123123/relationships/attendee",
                "related":"http://api-dev.weteachme.com:3000/v1/orders/enrolment-emails/123123/attendee"
@@ -254,7 +254,7 @@ HTTParty.post(
 ```
 
 
-This endpoint sends enrolment email by payment activity id.
+This endpoint sends enrolment email by attendee id.
 
 ### HTTP Request
 
@@ -295,7 +295,7 @@ HTTParty.post(
          "self":"http://api-dev.weteachme.com:3000/v1/orders/spot-cancellations/123123"
       },
       "relationships":{
-         "payment-activity":{
+         "attendee":{
             "links":{
                "self":"http://api-dev.weteachme.com:3000/v1/orders/spot-cancellations/123123/relationships/attendee",
                "related":"http://api-dev.weteachme.com:3000/v1/orders/spot-cancellations/123123/attendee"
