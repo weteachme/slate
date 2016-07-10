@@ -27,7 +27,7 @@ HTTParty.get(
   "data": [
     {
       "id":"123",
-      "type":"order/attendees",
+      "type":"orders/attendees",
       "attributes": {
         "firstname": "John",
         "lastname": "Snow",
@@ -76,7 +76,7 @@ HTTParty.get(
 {
   "data": {
     "id":"123",
-    "type":"order/attendees",
+    "type":"orders/attendees",
     "attributes": {
       "firstname": "John",
       "lastname": "Snow",
@@ -105,7 +105,7 @@ curl -X POST
   "https://api.weteachme.com/v1/orders/attendees/12/attendee-infos" 
   -d '{
     "data": {
-      "type": "order/attendee-infos",
+      "type": "orders/attendee-infos",
       "attributes": {
         "firstname": "Wayne",
         "lastname": "Rooney",
@@ -134,7 +134,7 @@ require 'httparty'
 
 payload = {
   "data": {
-    "type": "order/attendees",
+    "type": "orders/attendee-infos",
     "attributes": {
       "firstname": "Wayne",
       "lastname": "Rooney",
@@ -174,7 +174,7 @@ HTTParty.post(
 {
     "data": {
       "id": 12,
-      "type": "order/attendee-infos",
+      "type": "orders/attendee-infos",
       "links":{
          "self":"http://api-dev.weteachme.com:3000/v1/orders/attendee-infos/12"
       },
@@ -237,7 +237,7 @@ HTTParty.post(
 {
    "data":{
       "id": 123123,
-      "type":"enrolment-emails",
+      "type":"orders/enrolment-emails",
       "links":{
          "self":"http://api-dev.weteachme.com:3000/v1/orders/enrolment-emails/123123"
       },
@@ -290,7 +290,7 @@ HTTParty.post(
 {
    "data":{
       "id": 123123,
-      "type":"spot-cancellations",
+      "type":"orders/spot-cancellations",
       "links":{
          "self":"http://api-dev.weteachme.com:3000/v1/orders/spot-cancellations/123123"
       },

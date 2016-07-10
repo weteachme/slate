@@ -168,21 +168,28 @@ This endpoint retrieves one order by id.
 
 `GET https://api.weteachme.com/v1/orders/1231212`
 
-## Update Order By Id
+## Update Order Billing Info
 
 ```shell
-curl -X PATCH 
+curl -X POST
   -H "Content-Type: application/vnd.api+json" 
   -H "Accept: application/vnd.api+json" 
-  "https://api.weteachme.com/v1/orders/12123" 
+  "https://api.weteachme.com/v1/orders/12123/billing-updates"
   -d '{
     "data": {
-      "id": 12,
-      "type": "orders",
+      "type": "orders/billing-updates",
       "attributes": {
-        "billing-firstname": "Wayne",
-        "billing-lastname": "Rooney",
-        "billing-email": "wayne@rooney.com"
+        "firstname": "Wayne",
+        "lastname": "Rooney",
+        "email": "wayne@rooney.com"
+      },
+      "relationships":{
+        "order":{
+          "data":{
+             "type": "orders",
+             "id": 123123
+          }
+        }
       }
     }
   }'
@@ -194,17 +201,24 @@ require 'httparty'
 
 payload = {
   "data": {
-    "id": 12,
-    "type": "orders",
+    "type": "orders/billing-updates",
     "attributes": {
-      "billing-firstname": "Wayne",
-      "billing-lastname": "Rooney",
-      "billing-email": "wayne@rooney.com"
+      "firstname": "Wayne",
+      "lastname": "Rooney",
+      "email": "wayne@rooney.com"
+    },
+    "relationships":{
+      "order":{
+        "data":{
+           "type": "orders/billing-updates",
+           "id": 123123
+        }
+      }
     }
   }
 }
-HTTParty.patch(
-  "https://api.weteachme.com/v1/orders/123123", 
+HTTParty.post(
+  "https://api.weteachme.com/v1/orders/123123/billing-updates",
   payload,
   headers: {
     "Content-Type" => 'application/vnd.api+json', 
@@ -216,9 +230,9 @@ HTTParty.patch(
 
 > The above command returns HTTP/1.1 204
 
-This endpoint updates one recipient by id.
+This endpoint updates billing by order id.
 
 
 ### HTTP Request
 
-`PATCH https://api.weteachme.com/v1/orders/123123`
+`POST https://api.weteachme.com/v1/orders/123123/billing-updates`

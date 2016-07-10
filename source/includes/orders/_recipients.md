@@ -27,7 +27,7 @@ HTTParty.get(
   "data": [
     {
       "id":"123",
-      "type":"order/recipients",
+      "type":"orders/recipients",
       "attributes": {
         "firstname": "John",
         "lastname": "Snow",
@@ -57,7 +57,7 @@ curl -X POST
   -d '{
     "data": {
       "id": 12,
-      "type": "order/recipient-infos",
+      "type": "orders/recipient-infos",
       "attributes": {
         "firstname": "Wayne",
         "lastname": "Rooney",
@@ -83,7 +83,7 @@ require 'httparty'
 payload = {
   "data": {
     "id": 12,
-    "type": "order/recipient-infos",
+    "type": "orders/recipient-infos",
     "attributes": {
       "firstname": "Wayne",
       "lastname": "Rooney",
@@ -119,7 +119,7 @@ HTTParty.post(
 {
     "data": {
       "id": 12,
-      "type": "order/recipient-infos",
+      "type": "orders/recipient-infos",
       "links":{
          "self":"http://api-dev.weteachme.com:3000/v1/orders/recipient-infos/12"
       },
@@ -178,7 +178,7 @@ HTTParty.post(
 {
    "data":{
       "id": 123123,
-      "type":"gift-voucher-emails",
+      "type":"orders/gift-voucher-emails",
       "links":{
          "self":"http://api-dev.weteachme.com:3000/v1/orders/gift-voucher-emails/123123"
       },
@@ -231,7 +231,7 @@ HTTParty.post(
 {
    "data":{
       "id": 123123,
-      "type":"gift-voucher-cancellations",
+      "type":"orders/gift-voucher-cancellations",
       "links":{
          "self":"http://api-dev.weteachme.com:3000/v1/orders/gift-voucher-cancellations/123123"
       },
