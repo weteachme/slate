@@ -27,7 +27,7 @@ HTTParty.get(
   "data": [
     {
       "id":"123",
-      "type":"order/carts",
+      "type":"orders/carts",
       "attributes": {
         "type": "Ticket",
         "name": "How to Make Coffee",
@@ -39,7 +39,7 @@ HTTParty.get(
     },
     {
       "id":"123",
-      "type":"order/carts",
+      "type":"orders/carts",
       "attributes": {
         "type": "Ticket",
         "name": "How to Make Coffee",
@@ -51,7 +51,7 @@ HTTParty.get(
     },
     {
       "id":"124",
-      "type":"order/carts",
+      "type":"orders/carts",
       "attributes": {
         "type": "Gift Voucher",
         "name": "How to Make Coffee",
@@ -62,7 +62,7 @@ HTTParty.get(
     },
     {
       "id":"125",
-      "type":"order/carts",
+      "type":"orders/carts",
       "attributes": {
         "type": "Merchandise",
         "name": "Coffee Beans",

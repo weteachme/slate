@@ -27,7 +27,7 @@ HTTParty.get(
   "data": [
     {
       "id":"123",
-      "type":"order/payment-activities",
+      "type":"orders/payment-activities",
       "attributes": {
         "type": "Payment",
         "name": "How to Make Coffee",
@@ -42,7 +42,7 @@ HTTParty.get(
     },
     {
       "id":"123",
-      "type":"order/payment-activities",
+      "type":"orders/payment-activities",
       "attributes": {
         "type": "Refund",
         "name": "Refund",
@@ -91,7 +91,7 @@ HTTParty.get(
 {
   "data": {
     "id":"123",
-    "type":"order/payment-activities",
+    "type":"orders/payment-activities",
     "attributes": {
       "type": "Payment",
       "name": "How to Make Coffee",
@@ -124,7 +124,7 @@ curl -X POST
   -d '{
     "data": {
       "id": 12,
-      "type": "order/payment-activities",
+      "type": "orders/payment-activities",
       "attributes": {
         "total": 122.30,
         "due-date": "12/12/2016",
@@ -141,7 +141,7 @@ require 'httparty'
 payload = {
   "data": {
     "id": 12,
-    "type": "order/payment-activities",
+    "type": "orders/payment-activities",
     "attributes": {
       "total": 122.30,
       "due-date": "12/12/2016",
@@ -166,7 +166,7 @@ HTTParty.post(
 {
    "data":{
       "id":"123123",
-      "type":"payment-adjustments",
+      "type":"orders/payment-adjustments",
       "links":{
          "self":"http://api-dev.weteachme.com:3000/v1/orders/payment-adjustments/123123"
       },
@@ -224,7 +224,7 @@ HTTParty.post(
 {
    "data":{
       "id": 123123,
-      "type":"payment-confirmation-emails",
+      "type":"orders/payment-confirmation-emails",
       "links":{
          "self":"http://api-dev.weteachme.com:3000/v1/orders/payment-confirmation-emails/123123"
       },
@@ -271,7 +271,7 @@ HTTParty.post(
 {
    "data":{
       "id": 123123,
-      "type":"payment-reminder-emails",
+      "type":"orders/payment-reminder-emails",
       "links":{
          "self":"http://api-dev.weteachme.com:3000/v1/orders/payment-reminder-emails/123123"
       },
@@ -322,7 +322,7 @@ HTTParty.post(
 {
    "data":{
       "id": 123123,
-      "type":"offline-payments",
+      "type":"orders/offline-payments",
       "links":{
          "self":"http://api-dev.weteachme.com:3000/v1/orders/offline-payments/123123"
       },
@@ -374,7 +374,7 @@ HTTParty.post(
 {
    "data":{
       "id": 123123,
-      "type":"payment-cancellations",
+      "type":"orders/payment-cancellations",
       "links":{
          "self":"http://api-dev.weteachme.com:3000/v1/orders/payment-cancellations/123123"
       },
