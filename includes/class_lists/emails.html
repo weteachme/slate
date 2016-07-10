@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Documentation</title>
+
+    <link href="../../stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="../../javascripts/all_nosearch.js" type="text/javascript"></script>
+
+  </head>
+
+  <body class="includes includes_class_lists includes_class_lists_emails">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <img width="120" src="../../images/logo.png" />
+      <div id="toc">
+      </div>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h2 id="send-class-email">Send Class Email</h2>
+<pre class="highlight shell"><code>curl 
+  -X POST
+  -H <span class="s2">"Accept: application/vnd.api+json"</span> 
+  <span class="s2">"https://api.weteachme.com/v1/class-lists/123123/class-emails
+  -d '{
+    "</span>data<span class="s2">": {
+      "</span><span class="nb">type</span><span class="s2">": "</span>class-lists/class-emails<span class="s2">",
+      "</span>attributes<span class="s2">": {
+        "</span>subject<span class="s2">": "</span>Class Cancellation Notification<span class="s2">",
+        "</span>body<span class="s2">": "</span>&lt;p&gt;Welcome to the class, bla...bla...&lt;/p&gt;<span class="s2">",
+        "</span>send-to<span class="s2">": "</span>all<span class="s2">"
+      },
+      "</span>relationships<span class="s2">":{
+        "</span>class-list<span class="s2">":{
+          "</span>data<span class="s2">":{
+             "</span><span class="nb">type</span><span class="s2">": "</span>class-lists<span class="s2">",
+             "</span>id<span class="s2">": 123123
+          }
+        }
+      }
+    }
+  }'
+  -H "</span>API-KEY: meowmeowmeow<span class="s2">"
+</span></code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"class-lists/class-emails"</span><span class="p">,</span>
+    <span class="s2">"attributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"subject"</span><span class="p">:</span> <span class="s2">"Class Cancellation Notification"</span><span class="p">,</span>
+      <span class="s2">"body"</span><span class="p">:</span> <span class="s2">"&lt;p&gt;Welcome to the class, bla...bla...&lt;/p&gt;"</span><span class="p">,</span>
+      <span class="s2">"send-to"</span><span class="p">:</span> <span class="s2">"all"</span>
+    <span class="p">},</span>
+    <span class="s2">"relationships"</span><span class="p">:{</span>
+      <span class="s2">"class-list"</span><span class="p">:{</span>
+        <span class="s2">"data"</span><span class="p">:{</span>
+           <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"class-lists"</span><span class="p">,</span>
+           <span class="s2">"id"</span><span class="p">:</span> <span class="mi">123123</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/class-lists/123123/class-emails"</span><span class="p">,</span>
+  <span class="n">payload</span><span class="p">,</span>
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+  }
+);
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123123</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"class-lists/class-emails"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
+         </span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"http://api-dev.weteachme.com:3000/v1/class-lists/class-emails/123123"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"relationships"</span><span class="p">:{</span><span class="w">
+         </span><span class="nt">"class-list"</span><span class="p">:{</span><span class="w">
+            </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
+               </span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"http://api-dev.weteachme.com:3000/v1/class-lists/class-emails/123123/relationships/class-list"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"related"</span><span class="p">:</span><span class="s2">"http://api-dev.weteachme.com:3000/v1/class-lists/class-emails/123123/class-list"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint sends emails to class attendees.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.weteachme.com/v1/class-lists/123123/class-emails</code></p>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
