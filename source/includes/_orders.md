@@ -210,7 +210,7 @@ payload = {
     "relationships":{
       "order":{
         "data":{
-           "type": "orders/billing-updates",
+           "type": "orders",
            "id": 123123
         }
       }
