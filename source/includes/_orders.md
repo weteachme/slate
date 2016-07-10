@@ -228,7 +228,34 @@ HTTParty.post(
 );
 ```
 
-> The above command returns HTTP/1.1 204
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+      "id": 123123,
+      "type": "orders/billing-updates",
+      "links":{
+         "self":"http://api-dev.weteachme.com:3000/v1/orders/billing-updates/123123"
+      },
+      "attributes": {
+        "firstname": "Wayne",
+        "lastname": "Rooney",
+        "email": "wayne@rooney.com"
+      },
+      "relationships":{
+         "order":{
+            "links":{
+               "self":"http://api-dev.weteachme.com:3000/v1/orders/billing-updates/123123/relationships/order",
+               "related":"http://api-dev.weteachme.com:3000/v1/orders/billing-updates/123123/order"
+            }
+         }
+      }
+    }
+}
+```
+
+This endpoint updates one attendee by id.
 
 This endpoint updates billing by order id.
 
