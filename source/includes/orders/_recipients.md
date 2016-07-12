@@ -110,7 +110,6 @@ HTTParty.post(
   }
 );
 
-
 ```
 
 > The above command returns JSON structured like this:
@@ -142,6 +141,14 @@ HTTParty.post(
 ```
 
 This endpoint updates one recipient by id.
+
+### Scenario
+
+Steps      | Actions
+---------- | -------
+When | vendor updates recipient info
+Then | recipient info is updated
+Then | it logs the details updated activity
 
 
 ### HTTP Request
@@ -194,8 +201,15 @@ HTTParty.post(
 }
 ```
 
+This endpoint sends gift voucher email by recipient id.
 
-This endpoint sends gift-voucher email by recipient id.
+### Scenario
+
+Steps      | Actions
+---------- | -------
+When | vendor sends gift voucher emails
+Then | email should be send to the recipient
+Then | it logs the send email activity
 
 ### HTTP Request
 
@@ -247,7 +261,16 @@ HTTParty.post(
 }
 ```
 
-This endpoint cancels gift-voucher by id.
+This endpoint cancels gift voucher by id.
+
+### Scenario
+
+Steps      | Actions
+---------- | -------
+When | vendor cancels gift voucher
+Then | gift voucher is expired
+Then | recipient is cancelled
+Then | it logs the gift voucher cancelled activity
 
 ### HTTP Request
 

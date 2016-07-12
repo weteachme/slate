@@ -187,8 +187,17 @@ HTTParty.post(
 }
 ```
 
-
 This endpoint adjust payment by id.
+
+### Scenario
+
+Steps      | Actions
+---------- | -------
+When | vendor adjusts payment
+Then | payment updates total, due_date
+Then | payment also adds a note if note is left
+Then | it logs the payment updated activity
+
 
 ### HTTP Request
 
@@ -242,6 +251,19 @@ HTTParty.post(
 
 This endpoint sends confirmation email by payment activity id.
 
+### Scenario
+
+Steps      | Actions
+---------- | -------
+When | vendor sends payment confirmation email
+Then | it sends the email
+Then | it logs the send email activity
+
+### HTTP Request
+
+`POST https://api.weteachme.com/v1/orders/payment-activities/123123/payment-confirmation-emails`
+
+
 ## Send Payment Reminder Email
 
 ```shell
@@ -288,6 +310,15 @@ HTTParty.post(
 ```
 
 This endpoint sends reminder email by payment activity id.
+
+### Scenario
+
+Steps      | Actions
+---------- | -------
+When | vendor sends payment reminder email
+Then | it sends the email
+Then | it logs the send email activity
+
 
 ### HTTP Request
 
@@ -340,6 +371,18 @@ HTTParty.post(
 
 This endpoint marks payment activity as paid by id.
 
+### Scenario
+
+Steps      | Actions
+---------- | -------
+When | vendor marks payment as paid
+Then | it marks payable as paid (sets all fees to 0, sets total as subtotal)
+Then | it marks payment as paid (removes all payment info, set marked_as_paid, logged to true, change payment method to cash)
+Then | it processes the payment
+Then | it sends payment confirmation/notification emails
+Then | it logs the payment completed activity
+
+
 ### HTTP Request
 
 `POST https://api.weteachme.com/v1/orders/payment-activities/123123/offline-payments`
@@ -391,6 +434,15 @@ HTTParty.post(
 ```
 
 This endpoint cancels payment by id.
+
+### Scenario
+
+Steps      | Actions
+---------- | -------
+When | vendor cancels payment
+Then | it sets payable as cancelled
+Then | it cancels all attendees if requested
+Then | it logs the payment cancelled activity
 
 ### HTTP Request
 

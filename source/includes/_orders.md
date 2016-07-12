@@ -255,10 +255,15 @@ HTTParty.post(
 }
 ```
 
-This endpoint updates one attendee by id.
-
 This endpoint updates billing by order id.
 
+### Scenario
+
+Steps      | Actions
+---------- | -------
+When | vendor updates billing
+Then | billing firstname, lastname and email is updated
+Then | it logs the detail updated activity
 
 ### HTTP Request
 

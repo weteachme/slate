@@ -81,6 +81,16 @@ HTTParty.post(
 
 This endpoint cancels class and sends cancellation emails to class attendees.
 
+### Scenario
+
+Steps      | Actions
+---------- | -------
+When | Vendor cancels class
+Then | cancelled attribute should set to true for the class date
+Then | it sends out cancellation emails
+Then | it logs the class cancellation activity
+
+
 ### HTTP Request
 
 `POST https://api.weteachme.com/v1/class-lists/123123/cancellations`

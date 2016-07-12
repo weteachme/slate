@@ -83,6 +83,14 @@ HTTParty.post(
 
 This endpoint sends emails to class attendees.
 
+### Scenario
+
+Steps      | Actions
+---------- | -------
+When | vendor sends emails 
+Then | email should be send to all students in the list
+Then | it logs the send email activity
+
 ### HTTP Request
 
 `POST https://api.weteachme.com/v1/class-lists/123123/class-emails`

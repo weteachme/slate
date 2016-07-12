@@ -202,6 +202,14 @@ HTTParty.post(
 
 This endpoint updates one attendee by id.
 
+### Scenario
+
+Steps      | Actions
+---------- | -------
+When | vendor updates attendee info
+Then | all applicable fields are updated
+Then | it logs the details updated activity
+
 
 ### HTTP Request
 
@@ -253,8 +261,15 @@ HTTParty.post(
 }
 ```
 
-
 This endpoint sends enrolment email by attendee id.
+
+### Scenario
+
+Steps      | Actions
+---------- | -------
+When | vendor sends enrolment emails 
+Then | email is sent to the attendee
+Then | it logs the send email activity
 
 ### HTTP Request
 
@@ -307,6 +322,15 @@ HTTParty.post(
 ```
 
 This endpoint cancels spot by id.
+
+### Scenario
+
+Steps      | Actions
+---------- | -------
+When | vendor cancels attendee spot
+Then | attendee is cancelled for the class
+Then | it logs the spot cancelled activity
+
 
 ### HTTP Request
 
