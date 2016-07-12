@@ -1828,6 +1828,28 @@ You must specify a <code>class relationship</code>.
 
 <p>This endpoint sends emails to class attendees.</p>
 
+<h3 id="scenario">Scenario</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>vendor sends emails</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>email should be send to all students in the list</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the send email activity</td>
+</tr>
+</tbody></table>
+
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST https://api.weteachme.com/v1/class-lists/123123/class-emails</code></p>
@@ -1911,6 +1933,32 @@ You must specify a <code>class relationship</code>.
 
 <p>This endpoint cancels class and sends cancellation emails to class attendees.</p>
 
+<h3 id="scenario">Scenario</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>Vendor cancels class</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>cancelled attribute should set to true for the class date</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it sends out cancellation emails</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the class cancellation activity</td>
+</tr>
+</tbody></table>
+
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST https://api.weteachme.com/v1/class-lists/123123/cancellations</code></p>
@@ -1991,6 +2039,120 @@ You must specify a <code>class relationship</code>.
 </span></code></pre>
 
 <p>This endpoint transfers attendees.</p>
+
+<h3 id="scenario-1-transfer-to-same-date-no-merchandise">Scenario 1 - Transfer to same date (no merchandise)</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>vendor transfers all selected attendees to a different ticket within the same class date</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>a transfer record is created for each attendee</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>attendee is switched to another ticket</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>an immediate due-now payment is generated for the transfer</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it processes payment only if requested by vendor</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it sends transfer email</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the transfer activity</td>
+</tr>
+</tbody></table>
+
+<h3 id="scenario-2-transfer-to-different-date">Scenario 2 - Transfer to different date</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>vendor transfers all selected attendees to a different class date</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>a transfer record is created for each attendee</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it makes sure the new date is not sold out</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it finds or creates the new cart for the new class date</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>attendee is swtiched to the new cart</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>new cart is set as completed</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>linked merchandise for the previous date is moved to the new date</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>an immediate due-now payment is generated for the transfer</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it processes payment only if requested by vendor</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it sends transfer email</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the transfer activity</td>
+</tr>
+</tbody></table>
+
+<h3 id="scenario-3-transfer-with-merchandise">Scenario 3 - Transfer with merchandise</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>transfer is completed</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>merchandise is attached to the new date</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>recurring payments for merchandise are also generated</td>
+</tr>
+</tbody></table>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2322,9 +2484,29 @@ You must specify a <code>class relationship</code>.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint updates one attendee by id.</p>
-
 <p>This endpoint updates billing by order id.</p>
+
+<h3 id="scenario">Scenario</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>vendor updates billing</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>billing firstname, lastname and email is updated</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the detail updated activity</td>
+</tr>
+</tbody></table>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2601,6 +2783,28 @@ You must specify a <code>class relationship</code>.
 
 <p>This endpoint updates one attendee by id.</p>
 
+<h3 id="scenario">Scenario</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>vendor updates attendee info</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>all applicable fields are updated</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the details updated activity</td>
+</tr>
+</tbody></table>
+
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST https://api.weteachme.com/v1/orders/attendees/12/attendee-infos</code></p>
@@ -2648,6 +2852,28 @@ You must specify a <code>class relationship</code>.
 
 <p>This endpoint sends enrolment email by attendee id.</p>
 
+<h3 id="scenario">Scenario</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>vendor sends enrolment emails</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>email is sent to the attendee</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the send email activity</td>
+</tr>
+</tbody></table>
+
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST https://api.weteachme.com/v1/orders/attendees/123123/enrolment-emails</code></p>
@@ -2694,6 +2920,28 @@ You must specify a <code>class relationship</code>.
 </span></code></pre>
 
 <p>This endpoint cancels spot by id.</p>
+
+<h3 id="scenario">Scenario</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>vendor cancels attendee spot</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>attendee is cancelled for the class</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the spot cancelled activity</td>
+</tr>
+</tbody></table>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2803,7 +3051,6 @@ You must specify a <code>class relationship</code>.
   }
 );
 
-
 </span></code></pre>
 
 <blockquote>
@@ -2835,6 +3082,28 @@ You must specify a <code>class relationship</code>.
 </span></code></pre>
 
 <p>This endpoint updates one recipient by id.</p>
+
+<h3 id="scenario">Scenario</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>vendor updates recipient info</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>recipient info is updated</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the details updated activity</td>
+</tr>
+</tbody></table>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2881,7 +3150,29 @@ You must specify a <code>class relationship</code>.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint sends gift-voucher email by recipient id.</p>
+<p>This endpoint sends gift voucher email by recipient id.</p>
+
+<h3 id="scenario">Scenario</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>vendor sends gift voucher emails</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>email should be send to the recipient</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the send email activity</td>
+</tr>
+</tbody></table>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2928,7 +3219,33 @@ You must specify a <code>class relationship</code>.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint cancels gift-voucher by id.</p>
+<p>This endpoint cancels gift voucher by id.</p>
+
+<h3 id="scenario">Scenario</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>vendor cancels gift voucher</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>gift voucher is expired</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>recipient is cancelled</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the gift voucher cancelled activity</td>
+</tr>
+</tbody></table>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -3111,6 +3428,32 @@ You must specify a <code>class relationship</code>.
 
 <p>This endpoint adjust payment by id.</p>
 
+<h3 id="scenario">Scenario</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>vendor adjusts payment</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>payment updates total, due_date</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>payment also adds a note if note is left</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the payment updated activity</td>
+</tr>
+</tbody></table>
+
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST https://api.weteachme.com/v1/orders/payment-activities/123123/payment-adjustments</code></p>
@@ -3158,6 +3501,32 @@ You must specify a <code>class relationship</code>.
 
 <p>This endpoint sends confirmation email by payment activity id.</p>
 
+<h3 id="scenario">Scenario</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>vendor sends payment confirmation email</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it sends the email</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the send email activity</td>
+</tr>
+</tbody></table>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.weteachme.com/v1/orders/payment-activities/123123/payment-confirmation-emails</code></p>
+
 <h2 id="send-payment-reminder-email">Send Payment Reminder Email</h2>
 <pre class="highlight shell"><code>curl 
   -X POST
@@ -3200,6 +3569,28 @@ You must specify a <code>class relationship</code>.
 </span></code></pre>
 
 <p>This endpoint sends reminder email by payment activity id.</p>
+
+<h3 id="scenario">Scenario</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>vendor sends payment reminder email</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it sends the email</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the send email activity</td>
+</tr>
+</tbody></table>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -3248,6 +3639,40 @@ You must specify a <code>class relationship</code>.
 
 <p>This endpoint marks payment activity as paid by id.</p>
 
+<h3 id="scenario">Scenario</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>vendor marks payment as paid</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it marks payable as paid (sets all fees to 0, sets total as subtotal)</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it marks payment as paid (removes all payment info, set marked_as_paid, logged to true, change payment method to cash)</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it processes the payment</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it sends payment confirmation/notification emails</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the payment completed activity</td>
+</tr>
+</tbody></table>
+
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST https://api.weteachme.com/v1/orders/payment-activities/123123/offline-payments</code></p>
@@ -3294,6 +3719,32 @@ You must specify a <code>class relationship</code>.
 </span></code></pre>
 
 <p>This endpoint cancels payment by id.</p>
+
+<h3 id="scenario">Scenario</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>vendor cancels payment</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it sets payable as cancelled</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it cancels all attendees if requested</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the payment cancelled activity</td>
+</tr>
+</tbody></table>
 
 <h3 id="http-request">HTTP Request</h3>
 

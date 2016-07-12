@@ -109,6 +109,28 @@
 
 <p>This endpoint sends emails to class attendees.</p>
 
+<h3 id="scenario">Scenario</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>vendor sends emails</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>email should be send to all students in the list</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the send email activity</td>
+</tr>
+</tbody></table>
+
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST https://api.weteachme.com/v1/class-lists/123123/class-emails</code></p>

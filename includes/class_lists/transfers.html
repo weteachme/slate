@@ -105,6 +105,120 @@
 
 <p>This endpoint transfers attendees.</p>
 
+<h3 id="scenario-1-transfer-to-same-date-no-merchandise">Scenario 1 - Transfer to same date (no merchandise)</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>vendor transfers all selected attendees to a different ticket within the same class date</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>a transfer record is created for each attendee</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>attendee is switched to another ticket</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>an immediate due-now payment is generated for the transfer</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it processes payment only if requested by vendor</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it sends transfer email</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the transfer activity</td>
+</tr>
+</tbody></table>
+
+<h3 id="scenario-2-transfer-to-different-date">Scenario 2 - Transfer to different date</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>vendor transfers all selected attendees to a different class date</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>a transfer record is created for each attendee</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it makes sure the new date is not sold out</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it finds or creates the new cart for the new class date</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>attendee is swtiched to the new cart</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>new cart is set as completed</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>linked merchandise for the previous date is moved to the new date</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>an immediate due-now payment is generated for the transfer</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it processes payment only if requested by vendor</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it sends transfer email</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the transfer activity</td>
+</tr>
+</tbody></table>
+
+<h3 id="scenario-3-transfer-with-merchandise">Scenario 3 - Transfer with merchandise</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>transfer is completed</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>merchandise is attached to the new date</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>recurring payments for merchandise are also generated</td>
+</tr>
+</tbody></table>
+
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST https://api.weteachme.com/v1/class-lists/123123/transfers</code></p>

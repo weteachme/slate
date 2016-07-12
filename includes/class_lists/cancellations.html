@@ -107,6 +107,32 @@
 
 <p>This endpoint cancels class and sends cancellation emails to class attendees.</p>
 
+<h3 id="scenario">Scenario</h3>
+
+<table><thead>
+<tr>
+<th>Steps</th>
+<th>Actions</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>When</td>
+<td>Vendor cancels class</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>cancelled attribute should set to true for the class date</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it sends out cancellation emails</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>it logs the class cancellation activity</td>
+</tr>
+</tbody></table>
+
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST https://api.weteachme.com/v1/class-lists/123123/cancellations</code></p>
