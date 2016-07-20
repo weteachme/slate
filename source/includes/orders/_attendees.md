@@ -81,6 +81,26 @@ HTTParty.get(
       "firstname": "John",
       "lastname": "Snow",
       "email": "john@got.com",
+      "salutation": "Mr.",
+      "gender": "Female",
+      "dob": "12/12/1999",
+      "age": "20",
+      "company": "Company Name",
+      "companyTitle": "Brand Manager",
+      "address": "35 Nice Road, Melbourne",
+      "postcode": "3000",
+      "suburb": "Melbourne",
+      "member-id": "2323333",
+      "deal-code": "232xedke9",
+      "security-code": "23423ldld",
+      "uniform-size": "10",
+      "emergency-contact": "Some one \r\n 0433 333 333",
+      "medical": "N/A",
+      "requirment": "None",
+      "field-list": {
+        salutation: true,
+        age: true
+      },
       "ticket-name": "Normal Price",
       "class-date": "Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)",
       "class-name": "How to Revive From Dead",
@@ -113,7 +133,7 @@ curl -X POST
         "mobile": "0433 333 333",
         "requirements": "Gluten Free",
         "medical": "None",
-        "emergency_contact": "Some Contacts",
+        "emergency-contact": "Some Contacts",
         "all updatable fields": "..."
       },
       "relationships":{
@@ -185,7 +205,7 @@ HTTParty.post(
         "mobile": "0433 333 333",
         "requirements": "Gluten Free",
         "medical": "None",
-        "emergency_contact": "Some Contacts",
+        "emergency-contact": "Some Contacts",
         "all updatable fields": "..."
       },
       "relationships":{
