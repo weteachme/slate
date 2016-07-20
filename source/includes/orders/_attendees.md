@@ -98,8 +98,8 @@ HTTParty.get(
       "medical": "N/A",
       "requirment": "None",
       "field-list": {
-        salutation: true,
-        age: true
+        "salutation": true,
+        "age": true
       },
       "ticket-name": "Normal Price",
       "class-date": "Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)",
