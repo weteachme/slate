@@ -1858,7 +1858,7 @@ You must specify a <code>class relationship</code>.
 <pre class="highlight shell"><code>curl 
   -X POST
   -H <span class="s2">"Accept: application/vnd.api+json"</span> 
-  <span class="s2">"https://api.weteachme.com/v1/class-lists/123123/cancellations
+  <span class="s2">"https://api.weteachme.com/v1/class-lists/123123/class-cancellations
   -d '{
     "</span>data<span class="s2">": {
       "</span><span class="nb">type</span><span class="s2">": "</span>class-lists/cancellations<span class="s2">",
@@ -1899,7 +1899,7 @@ You must specify a <code>class relationship</code>.
 <span class="p">}</span>
 
 <span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s2">"https://api.weteachme.com/v1/class-lists/123123/cancellations"</span><span class="p">,</span>
+  <span class="s2">"https://api.weteachme.com/v1/class-lists/123123/class-cancellations"</span><span class="p">,</span>
   <span class="n">payload</span><span class="p">,</span>
   <span class="ss">headers: </span><span class="p">{</span>
     <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
@@ -1917,13 +1917,13 @@ You must specify a <code>class relationship</code>.
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123123</span><span class="p">,</span><span class="w">
       </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"class-lists/cancellations"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
-         </span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"http://api-dev.weteachme.com:3000/v1/class-lists/cancellations/123123"</span><span class="w">
+         </span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"http://api-dev.weteachme.com:3000/v1/class-lists/class-cancellations/123123"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"relationships"</span><span class="p">:{</span><span class="w">
          </span><span class="nt">"class-list"</span><span class="p">:{</span><span class="w">
             </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
-               </span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"http://api-dev.weteachme.com:3000/v1/class-lists/cancellations/123123/relationships/class-list"</span><span class="p">,</span><span class="w">
-               </span><span class="nt">"related"</span><span class="p">:</span><span class="s2">"http://api-dev.weteachme.com:3000/v1/class-lists/cancellations/123123/class-list"</span><span class="w">
+               </span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"http://api-dev.weteachme.com:3000/v1/class-lists/class-cancellations/123123/relationships/class-list"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"related"</span><span class="p">:</span><span class="s2">"http://api-dev.weteachme.com:3000/v1/class-lists/class-cancellations/123123/class-list"</span><span class="w">
             </span><span class="p">}</span><span class="w">
          </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -1961,7 +1961,7 @@ You must specify a <code>class relationship</code>.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.weteachme.com/v1/class-lists/123123/cancellations</code></p>
+<p><code class="prettyprint">POST https://api.weteachme.com/v1/class-lists/123123/class-cancellations</code></p>
 
           <h2 id="transfer-class">Transfer Class</h2>
 <pre class="highlight shell"><code>curl 
@@ -2666,6 +2666,26 @@ You must specify a <code>class relationship</code>.
       </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Snow"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@got.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"salutation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Female"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"dob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12/12/1999"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"age"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company Name"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"companyTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brand Manager"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35 Nice Road, Melbourne"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"suburb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Melbourne"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"member-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2323333"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deal-code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"232xedke9"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"security-code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23423ldld"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"uniform-size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"emergency-contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some one \r\n 0433 333 333"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"medical"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N/A"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"requirment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"field-list"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">salutation:</span><span class="w"> </span><span class="err">true,</span><span class="w">
+        </span><span class="err">age:</span><span class="w"> </span><span class="err">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="nt">"ticket-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Normal Price"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"class-date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu Feb 04 2016 20:30:00 GMT+1100 (AEDT)"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"class-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How to Revive From Dead"</span><span class="p">,</span><span class="w">
@@ -2696,7 +2716,7 @@ You must specify a <code>class relationship</code>.
         "mobile": "0433 333 333",
         "requirements": "Gluten Free",
         "medical": "None",
-        "emergency_contact": "Some Contacts",
+        "emergency-contact": "Some Contacts",
         "all updatable fields": "..."
       },
       "relationships":{
@@ -2766,7 +2786,7 @@ You must specify a <code>class relationship</code>.
         </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0433 333 333"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"requirements"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gluten Free"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"medical"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"emergency_contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some Contacts"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"emergency-contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some Contacts"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"all updatable fields"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"relationships"</span><span class="p">:{</span><span class="w">
