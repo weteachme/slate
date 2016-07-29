@@ -3978,6 +3978,70 @@ You must specify a <code>class relationship</code>.
 </tr>
 </tbody></table>
 
+          <h1 id="withdraw-funds">Withdraw Funds</h1>
+
+<h2 id="create-withdraw">CREATE Withdraw</h2>
+<pre class="highlight shell"><code>curl -X POST
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Accept: application/vnd.api+json"</span>
+  <span class="s2">"https://api.weteachme.com/v1/withdraws"</span> 
+  -d <span class="s1">'{
+    "data": {
+      "type": "withdraws",
+      "attributes": {
+        "total": 100
+      }
+    }
+  }'</span>
+  -H <span class="s2">"API-KEY: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"withdraws"</span><span class="p">,</span>
+    <span class="s2">"attributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"total"</span><span class="p">:</span> <span class="s2">"100"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s2">"https://api.weteachme.com/v1/withdraws"</span><span class="p">,</span> 
+  <span class="n">payload</span><span class="p">,</span>
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="s2">"Content-Type"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"Accept"</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.api+json'</span><span class="p">,</span> 
+    <span class="s2">"API-KEY"</span> <span class="o">=&gt;</span> <span class="n">meowmeowmeow</span><span class="s2">"
+    }
+  );
+
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns HTTP/1.1 201 Created</p>
+
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"224476"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"withdraws"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"/v1/withdraws/224476"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w"> 
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint creates one withdraw.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.weteachme.com/v1/withdraws</code></p>
+
           <h1 id="errors">Errors</h1>
 
 <p>The WeTeachMe API uses the following error codes:</p>
