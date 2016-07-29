@@ -25,6 +25,7 @@ includes:
   - orders/payment_activities
   - orders/log_activities
   - transactions
+  - withdraws
   - errors
 
 search: true
